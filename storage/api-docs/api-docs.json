@@ -1,0 +1,445 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Api Beatoken",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/drops/{drop_id}": {
+            "get": {
+                "tags": [
+                    "showDrop"
+                ],
+                "summary": "Returns drop by id",
+                "operationId": "879e5f035847b2bab1da91c0ecad32fd",
+                "responses": {
+                    "200": {
+                        "description": "Successful get drop"
+                    }
+                }
+            }
+        },
+        "/drops/get-highlited-drops": {
+            "get": {
+                "tags": [
+                    "getHighlitedDrops"
+                ],
+                "summary": "Return Highlited drops",
+                "operationId": "96daf26c44c76c72ec051af8eddb1440",
+                "responses": {
+                    "200": {
+                        "description": "Successful getHighlitedDrops"
+                    }
+                }
+            }
+        },
+        "/drop-lines/store-by-drop/{drop_id}": {
+            "get": {
+                "tags": [
+                    "storeByDrop"
+                ],
+                "summary": "storeByDrop",
+                "operationId": "3f750e8dd39000a6786556c66b9c96af",
+                "responses": {
+                    "200": {
+                        "description": "Successful storeByDrop"
+                    }
+                }
+            }
+        },
+        "/drop-lines/my-time-to-start-buy-drop/{drop_id}": {
+            "get": {
+                "tags": [
+                    "myTimeToStartBuyDrop"
+                ],
+                "summary": "myTimeToStartBuyDrop",
+                "operationId": "2e56a6e6c1b06008f120ab0c65a39683",
+                "responses": {
+                    "200": {
+                        "description": "Successful myTimeToStartBuyDrop"
+                    }
+                }
+            }
+        },
+        "/drop-lines/my-time-to-buy-drop/{drop_id}": {
+            "get": {
+                "tags": [
+                    "myTimeToBuyDrop"
+                ],
+                "summary": "myTimeToBuyDrop",
+                "operationId": "1dde4d0b395e064cd4243c775cd45626",
+                "responses": {
+                    "200": {
+                        "description": "Successful myTimeToBuyDrop"
+                    }
+                }
+            }
+        },
+        "/drop-lines/destroy-by-drop/{drop_id}": {
+            "get": {
+                "tags": [
+                    "destroyByDrop"
+                ],
+                "summary": "destroyByDrop",
+                "operationId": "01bbf6c4b9578a3040b2d481e56f0545",
+                "responses": {
+                    "200": {
+                        "description": "Successful destroyByDrop"
+                    }
+                }
+            }
+        },
+        "/nfts": {
+            "get": {
+                "tags": [
+                    "getAllNfts"
+                ],
+                "summary": "Returns all nfts",
+                "operationId": "d820ae0f2a7ba2f7993845e58406c4df",
+                "responses": {
+                    "200": {
+                        "description": "Successful getAllNfts"
+                    }
+                }
+            }
+        },
+        "/nfts/{nft}": {
+            "get": {
+                "tags": [
+                    "getNftById"
+                ],
+                "summary": "Returns nft by id",
+                "operationId": "97caecfe43a40594c2f2ddcb98c3474f",
+                "responses": {
+                    "200": {
+                        "description": "Successful get nft by id"
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "tags": [
+                    "indexUsers"
+                ],
+                "summary": "Returns list of users",
+                "operationId": "7208c29037df2b8bb02499ba39ed8a78",
+                "responses": {
+                    "200": {
+                        "description": "Successful get list"
+                    }
+                }
+            }
+        },
+        "/users/{user_id}": {
+            "get": {
+                "tags": [
+                    "showUsers"
+                ],
+                "summary": "Returns user by id",
+                "operationId": "613718d3651b0b11377d6336526b7e79",
+                "responses": {
+                    "200": {
+                        "description": "Successful get user"
+                    }
+                }
+            }
+        },
+        "/users/certified-users": {
+            "get": {
+                "tags": [
+                    "getCertifiedUsers"
+                ],
+                "summary": "Returns list of certifiedUsers",
+                "operationId": "9f9c8bea307126b721337385361b8efa",
+                "responses": {
+                    "200": {
+                        "description": "Successful getCertifiedUsers"
+                    }
+                }
+            }
+        },
+        "/users/{user}": {
+            "put": {
+                "tags": [
+                    "updateUsers"
+                ],
+                "summary": "Update user by id. Available only for superadmin",
+                "operationId": "4ac3faef1359369686fdd433daad2bee",
+                "parameters": [
+                    {
+                        "name": "request",
+                        "in": "path",
+                        "description": "type=`array` |\n     *     description=`array ['name', 'twitter_url', 'instagram_url', 'facebook_url', 'role_id', 'first_name', 'last_name', 'country_code', 'city', 'address', 'zip', 'cell_number', 'cell_cc']`",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful update user"
+                    }
+                }
+            }
+        },
+        "/users/edit-profile": {
+            "post": {
+                "tags": [
+                    "editProfile"
+                ],
+                "summary": "Edit profile Authorized User",
+                "operationId": "7a89283545b80a27911daea6a9e227ca",
+                "parameters": [
+                    {
+                        "name": "request",
+                        "in": "path",
+                        "description": "type=`array` |\n     *     description=`array ['name', 'twitter_url', 'instagram_url', 'facebook_url', 'first_name', 'last_name', 'country_code', 'city', 'address', 'zip', 'cell_number', 'cell_cc']`",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful update user"
+                    }
+                }
+            }
+        },
+        "/users/current-user": {
+            "get": {
+                "tags": [
+                    "current-user"
+                ],
+                "summary": "Returns current authorized user",
+                "operationId": "a7f0470a05ea167b5d10af9a9d0f6b4c",
+                "responses": {
+                    "200": {
+                        "description": "Successful current get user"
+                    }
+                }
+            }
+        },
+        "/users/formated-current-user": {
+            "get": {
+                "tags": [
+                    "formated-current-user"
+                ],
+                "summary": "Returns formated current authorized user",
+                "operationId": "f52286f7e00e384c59e4a8776ae208e6",
+                "responses": {
+                    "200": {
+                        "description": "Successful formated current get user"
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "tags": [
+                    "login"
+                ],
+                "summary": "Authorization in the system",
+                "operationId": "8757daa4d1becde861a8df078fef8db9",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "type=`email` | description=`Email`",
+                        "required": true
+                    },
+                    {
+                        "name": "password",
+                        "in": "path",
+                        "description": "type=`string` | description=`Password`",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful login"
+                    }
+                }
+            }
+        },
+        "/register": {
+            "post": {
+                "tags": [
+                    "register"
+                ],
+                "summary": "Registration in the system",
+                "operationId": "7803685ce02ef1ad1d7b190a14c06284",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "type=`email` | description=`Email`",
+                        "required": true
+                    },
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "description": "type=`string` | description=`Name`",
+                        "required": true
+                    },
+                    {
+                        "name": "password",
+                        "in": "path",
+                        "description": "type=`string` | description=`Password`",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful register"
+                    }
+                }
+            }
+        },
+        "/users/email/verify": {
+            "post": {
+                "tags": [
+                    "verifyEmail"
+                ],
+                "summary": "Email verify",
+                "operationId": "b8441cef3902d35ad00ef6016f590e9d",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "type=`string` | description=`Verify`",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful verify"
+                    }
+                }
+            }
+        },
+        "/users/email/resend": {
+            "get": {
+                "tags": [
+                    "resendCode"
+                ],
+                "summary": "Email resend code",
+                "operationId": "a3ced1d6e354684771df679b35fd30fd",
+                "responses": {
+                    "200": {
+                        "description": "Successful resend code"
+                    }
+                }
+            }
+        },
+        "/users/change-avatar": {
+            "post": {
+                "tags": [
+                    "changeAvatar"
+                ],
+                "summary": "Change avatar",
+                "operationId": "9f4f0abc796b3117e4eb3aa445378c78",
+                "parameters": [
+                    {
+                        "name": "avatar",
+                        "in": "path",
+                        "description": "type=`file` | description=`Avatar file`",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful change avatar"
+                    }
+                }
+            }
+        },
+        "/users/change-password": {
+            "post": {
+                "tags": [
+                    "changePassword"
+                ],
+                "summary": "Change password",
+                "operationId": "a71d4bb6f399fb37fc4034b375c77cfa",
+                "parameters": [
+                    {
+                        "name": "oldPassword",
+                        "in": "path",
+                        "description": "type=`string` | description=`Old password`",
+                        "required": true
+                    },
+                    {
+                        "name": "newPassword",
+                        "in": "path",
+                        "description": "type=`string` | description=`New password`",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful change password"
+                    }
+                }
+            }
+        },
+        "/forgot-password/{email}": {
+            "get": {
+                "tags": [
+                    "forgotPassword"
+                ],
+                "summary": "Forgot password",
+                "operationId": "709ffbed47eece5baef9081d1ff4e8a0",
+                "responses": {
+                    "200": {
+                        "description": "Successful sent forgot password letter"
+                    }
+                }
+            }
+        },
+        "/reset/process": {
+            "post": {
+                "tags": [
+                    "setNewPassword"
+                ],
+                "summary": "setNewPassword",
+                "operationId": "ff0995cbac6ba3be45da31fd91208ef2",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "type=`email` | description=`Email`",
+                        "required": true
+                    },
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "type=`string` | description=`Code`",
+                        "required": true
+                    },
+                    {
+                        "name": "password",
+                        "in": "path",
+                        "description": "type=`string` | description=`Password`",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful reset password"
+                    }
+                }
+            }
+        },
+        "/logout": {
+            "get": {
+                "tags": [
+                    "logout"
+                ],
+                "summary": "logout",
+                "operationId": "afaec2fb5c682fd2443a40353ddbe454",
+                "responses": {
+                    "200": {
+                        "description": "Redirect"
+                    }
+                }
+            }
+        }
+    }
+}

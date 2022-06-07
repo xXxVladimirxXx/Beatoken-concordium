@@ -1,0 +1,4759 @@
+@import "config";
+@import "fonts";
+:root {
+    font-size: 16px;
+    // for range slider
+    --accentcolor: #1c70de;
+    --accentcoloralpha: #dc3b54;
+    --thumbsize: 40px;
+}
+
+body {
+    box-sizing: border-box;
+
+    min-width: 320px;
+    max-width: 1920px;
+
+    background: rgb(20, 20, 22);
+    background: linear-gradient(
+                    90deg,
+                    rgba(20, 20, 22, 1) 0%,
+                    rgba(19, 23, 30, 1) 44%,
+                    rgba(23, 29, 36, 1) 100%
+    );
+    &.full-screen {
+        display: flex;
+        flex-direction: column;
+        // height: 100vh;
+    }
+}
+
+.container {
+    max-width: 1151px;
+}
+
+.visually-hidden {
+    visibility: hidden;
+}
+
+.section-title {
+    font-family: "Shapiro 75 Heavy Wide";
+    font-size: 2.375rem;
+    color: $color-white;
+}
+
+.section-drop-title {
+    font-family: "Shapiro 65 Light Heavy Wide";
+    color: $color-white;
+}
+
+////////////
+// NAVBAR //
+////////////
+
+.navbar-toggler-icon {
+    background-image: url("../img/nav-icon.svg");
+    border: none;
+}
+.navbar {
+    display: flex;
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+
+    background-color: $color-dark-black;
+
+    border-bottom: 1px solid $color-dark-grey;
+    .nav-container {
+        display: flex;
+        width: 100%;
+    }
+    .navbar-brand {
+        display: flex;
+        align-self: center;
+
+        padding-right: 46px;
+        margin-right: 0;
+        font-family: "Shapiro 95 Super";
+        text-transform: uppercase;
+
+        border-right: 1px solid $color-text-grey;
+        .img-logo {
+            width: 36px;
+            height: 36px;
+
+            margin-right: 7px;
+        }
+        .text-logo {
+            width: 98px;
+            height: auto;
+        }
+    }
+}
+
+.nav-collapse {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.nav-user-menu {
+    position: fixed;
+    top: 0;
+    left: -2000px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    height: 100vh;
+
+    background-color: #141416;
+    transition: 0.5s ease-in;
+    z-index: 20;
+    &.nav-active {
+        left: 0;
+    }
+
+    .nav-user__main-user {
+        padding: 50px 0 45px 50px;
+    }
+    .nav-user__button-close-user {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        width: 69px;
+        height: 100vh;
+        padding-top: 50px;
+        background-color: #0b0b0c;
+        font-size: 1rem;
+        color: #777e8f;
+    }
+}
+
+.nav-collapse__main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.nav-icon {
+    display: none;
+    cursor: pointer;
+}
+
+.nav-collapse__button-close {
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    .button-close {
+        cursor: pointer;
+
+        font-size: 1rem;
+        color: #777e8f;
+    }
+}
+
+.navbar-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: $color-white;
+    width: 100%;
+}
+.navbar-list {
+    display: flex;
+    justify-content: space-between;
+
+    &.main {
+        margin-left: 42px;
+        .nav-item {
+            margin-right: 57px;
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+
+    &.registration {
+        align-items: center;
+        .nav-item {
+            margin-right: 53px;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+    .user-avatar__item-menu {
+        position: relative;
+
+        z-index: 1;
+        .user-dropdown__menu {
+            position: absolute;
+            width: 221px;
+            display: none;
+            top: 62px;
+            right: 0;
+
+            padding: 18px 16px 20px;
+
+            background-color: #23262e;
+            border: 1px solid #353944;
+
+            border-bottom-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+            &.active {
+                display: block;
+            }
+            &:before {
+                content: "";
+                position: absolute;
+                top: -5px;
+                right: 5px;
+                width: 25px;
+                height: 25px;
+                background-color: #23262e;
+                transform: rotate(45deg);
+            }
+            .user-name {
+                padding-left: 15px;
+                font-family: "Shapiro 35 Feather";
+                font-size: 1.125rem;
+
+                color: $color-white;
+            }
+
+            .user-nickname {
+                padding-left: 15px;
+
+                font-family: "Shapiro 55 Middle";
+                font-size: 0.875rem;
+                color: $color-text-grey;
+            }
+            li {
+                font-family: "Shapiro 55 Middle";
+                margin-bottom: 14px;
+                padding-left: 15px;
+
+                &:first-child {
+                    padding-left: 0;
+                }
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                a {
+                    width: 100%;
+                    color: $color-text-grey;
+                    &:hover {
+                        color: $color-white;
+                        transition: ease-out 0.3s;
+                    }
+                }
+            }
+            .user-link__balance {
+                display: flex;
+                align-items: center;
+
+                width: 100%;
+
+                padding: 15px 0 15px 20px;
+                margin-top: 17px;
+
+                font-size: 0.875rem;
+                text-transform: uppercase;
+                color: $color-white;
+
+                background-color: #141416;
+                border-radius: 20px;
+
+                img {
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+
+    .nav-item {
+        position: relative;
+
+        .nav-link {
+            padding: 0 8px;
+            font-size: 0.875rem;
+            color: $color-text-grey;
+            font-family: "Shapiro 55 Middle";
+
+            &.active {
+                &:after {
+                    content: "";
+
+                    position: absolute;
+                    left: 0;
+                    bottom: -8px;
+
+                    display: block;
+                    width: 100%;
+                    height: 2px;
+
+                    background: linear-gradient(
+                                    90deg,
+                                    rgba(28, 112, 222, 1) 0%,
+                                    rgba(28, 112, 222, 1) 50%,
+                                    rgba(40, 41, 58, 1) 100%
+                    );
+                }
+            }
+
+            &.user-avatar__link {
+                padding: 0;
+
+                .user-avatar {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                }
+                &:after {
+                    display: none;
+                }
+            }
+
+            &:after {
+                background: none repeat scroll 0 0 transparent;
+                bottom: -8px;
+                content: "";
+                display: block;
+                height: 2px;
+                left: 50%;
+                position: absolute;
+                background: linear-gradient(
+                                90deg,
+                                rgba(28, 112, 222, 1) 0%,
+                                rgba(28, 112, 222, 1) 50%,
+                                rgba(40, 41, 58, 1) 100%
+                );
+                transition: width 0.3s ease 0s, left 0.3s ease 0s;
+                width: 0;
+            }
+            &:hover {
+                color: $color-text-grey;
+                &:after {
+                    width: 100%;
+                    left: 0;
+                }
+            }
+
+            &.sign-up {
+                &:after {
+                    display: none;
+                }
+                @include buttonBlue;
+            }
+        }
+    }
+}
+////////////
+// HEADER //
+////////////
+.main-header {
+    width: 100%;
+    height: 100vh;
+
+    padding-top: 130px;
+    padding-bottom: 284px;
+}
+.header-wrapper {
+    width: 50%;
+}
+
+.header-title__block {
+    margin-bottom: 52px;
+
+    color: $color-white;
+    .sup-title {
+        text-transform: uppercase;
+        color: $color-text-grey;
+        font-family: "Shapiro 55 Middle Extd";
+        font-size: 0.75rem;
+    }
+
+    h1 {
+        margin-bottom: 16px;
+
+        font-family: "Shapiro 85 Super Heavy Wide";
+        font-size: 3.34rem;
+    }
+
+    .sub-title {
+        font-family: "Shapiro 45 Welter";
+        font-size: 0.875rem;
+        span {
+            display: block;
+        }
+    }
+}
+
+.header-buttons__block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 196px;
+    .start-collection__btn {
+        @include buttonBlue;
+        margin-bottom: 27px;
+    }
+
+    .powered-by__block {
+        display: flex;
+        align-items: center;
+        width: 85%;
+        img {
+            margin-right: 8px;
+        }
+        p {
+            font-family: "Shapiro 45 Welter";
+            font-size: 10px;
+            color: $color-white;
+        }
+    }
+}
+
+.abstraction-img {
+    position: absolute;
+
+    width: 100%;
+    height: 1162px;
+
+    top: 100px;
+
+    background-image: url("../img/abst-hd.png");
+    background-position: 35% 100%;
+    background-size: cover;
+
+    z-index: -1;
+}
+.header-bg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+    height: 100vh;
+    background-image: url("../img/header-bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    opacity: 0.1;
+    z-index: -3;
+}
+
+/////////////////
+// MAIN CONTENT//
+/////////////////
+///////////////////////////
+// HOW TO ACTION SECTION //
+///////////////////////////
+.how-to-action {
+    position: relative;
+
+    .how-toBg {
+        position: absolute;
+
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        width: 100%;
+        height: auto;
+
+        background-image: url("../img/how-to-action_BG.png");
+        background-size: 100% 80%;
+        background-repeat: no-repeat;
+
+        background-position: center;
+
+        opacity: 0.08;
+        z-index: -5;
+    }
+}
+
+.cards-list {
+    margin-bottom: 83px;
+    padding: 42px 56px 40px 56px;
+
+    color: $color-white;
+
+    background-color: #0b0b0c;
+    border-radius: 12px;
+
+    .card-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        transition: all 0.3s;
+        &:hover {
+            transform: scale(1.1);
+        }
+        p {
+            color: $color-white;
+        }
+        .card-sup__title {
+            font-family: "Shapiro 55 Middle Extd";
+            font-size: 0.75rem;
+            color: $color-text-grey;
+            text-transform: uppercase;
+        }
+
+        .card-title {
+            font-family: "Shapiro 65 Light Heavy Wide";
+            font-size: 2rem;
+            text-transform: uppercase;
+        }
+    }
+
+    .card-list__logged {
+        display: flex;
+        justify-content: space-between;
+    }
+    .card-logged {
+        width: 50%;
+        margin-right: 20px;
+        h3 {
+            margin-bottom: 12px;
+
+            font-family: "Shapiro 75 Heavy Wide";
+            font-size: 2.375rem;
+        }
+        p {
+            font-family: "Shapiro 45 Welter";
+            font-size: 0.875rem;
+
+            margin-bottom: 30px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .card-logged__img {
+        width: 50%;
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+
+.how-to-action__title-block {
+    text-align: center;
+    margin-bottom: 92px;
+    h2 {
+        margin-bottom: 13px;
+    }
+    p {
+        font-size: 0.875rem;
+        color: $color-white;
+        font-family: "Shapiro 45 Welter";
+    }
+
+    .all-packs__link {
+        @include buttonBlue;
+        font-family: "Shapiro 75 Heavy";
+        font-size: 0.875rem;
+        margin-top: 20px;
+    }
+}
+
+.sets-block {
+    display: grid;
+    grid-template-columns: 1fr 0.6fr;
+    height: auto;
+    column-gap: 16px;
+
+    .price {
+        flex: 0 0 auto;
+    }
+}
+
+.set {
+    display: flex;
+    flex-direction: column;
+
+    color: $color-white;
+    border-radius: 12px;
+
+    h3 {
+        margin-top: 20px;
+        margin-bottom: 15px;
+        font-family: "Shapiro 65 Light Heavy Wide";
+        font-size: 37px;
+        text-transform: uppercase;
+        span {
+            display: block;
+        }
+    }
+    .set-state {
+        padding: 5px 10px;
+
+        font-family: "Shapiro 75 Heavy";
+
+        font-size: 0.625rem;
+        text-align: center;
+        text-transform: uppercase;
+
+        border-radius: 20px;
+    }
+    .set-img {
+        //-webkit-box-shadow: 0px 0px 26px 6px rgba(0, 0, 0, 0.38);
+        // box-shadow: 0px 0px 26px 6px rgba(0, 0, 0, 0.38);
+        transform: rotate(15deg);
+        transition: all 0.3s;
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+}
+
+.set-block {
+    display: flex;
+    justify-content: space-between;
+    flex: 1 0 auto;
+}
+
+.set-one {
+    position: relative;
+    display: flex;
+
+    width: 100%;
+    height: auto;
+
+    padding: 24px 26px 31px 26px;
+
+    background: linear-gradient(
+                    180deg,
+                    rgba(112, 104, 150, 1) 40%,
+                    rgba(33, 162, 190, 1) 100%
+    );
+
+    overflow: hidden;
+    .set-state {
+        background: linear-gradient(
+                        90deg,
+                        rgba(28, 112, 222, 1) 0%,
+                        rgba(155, 72, 128, 1) 100%
+        );
+    }
+    .set-one__txt {
+        width: 60%;
+        font-family: "Shapiro 45 Welter";
+        font-size: 0.875rem;
+        z-index: 1;
+    }
+
+    .set-one__img {
+        display: flex;
+        align-items: center;
+
+        width: 40%;
+
+        img {
+            margin-top: 50px;
+
+            filter: drop-shadow(7px 7px 7px #000);
+            -webkit-filter: drop-shadow(7px 7px 7px #000);
+        }
+    }
+
+    .bg-txt {
+        position: absolute;
+
+        width: 405px;
+        height: 480px;
+
+        right: 0;
+        top: -23px;
+        background-image: url("../img/beatoken.png");
+        background-repeat: repeat;
+        z-index: 0;
+    }
+}
+
+.set-two {
+    position: relative;
+    display: flex;
+
+    width: 100%;
+    height: auto;
+
+    padding: 24px 2px 31px 26px;
+    background-color: #0f0c30;
+
+    overflow: hidden;
+    .set-state {
+        background-color: #d13a5a;
+    }
+    .set-two__txt {
+        font-family: "Shapiro 45 Welter";
+        font-size: 0.875rem;
+        z-index: 1;
+        width: 60%;
+    }
+
+    .set-two__img {
+        display: flex;
+        align-items: center;
+        width: 40%;
+        img {
+            align-items: center;
+            margin-top: 50px;
+        }
+    }
+    .bg-txt {
+        position: absolute;
+
+        width: 260px;
+        height: 480px;
+
+        right: 0;
+        top: -23px;
+        background-image: url("../img/beatoken.png");
+        background-repeat: repeat;
+        z-index: 0;
+    }
+}
+
+//////////////////////
+// CAROUSEL SECTION //
+//////////////////////
+.section-carousel {
+    padding: 155px 0 155px;
+
+    .section-title {
+        margin-bottom: 69px;
+    }
+}
+.carousel-wrapper {
+    width: 100%;
+    .prev,
+    .next {
+        position: absolute;
+        top: 10%;
+
+        width: 34px;
+        height: 34px;
+
+        padding: 10px;
+
+        z-index: 1;
+        cursor: pointer;
+
+        &:hover {
+            border: 2px solid $color-white;
+            border-radius: 50%;
+        }
+    }
+
+    .next {
+        right: -35px;
+    }
+
+    .prev {
+        left: -35px;
+    }
+}
+
+.carousel {
+    width: 80%;
+
+    margin: 0 auto;
+    color: $color-white;
+
+    .slick-slide {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        outline: none;
+
+        .artist-img {
+            width: 93.5px;
+            height: 93.5px;
+
+            margin-bottom: 20px;
+
+            border-radius: 50%;
+        }
+
+        .artist-block {
+            display: flex;
+            align-items: center;
+            .artist-name {
+                margin-right: 6px;
+                font-family: "Shapiro 55 Middle Extd";
+                font-size: 1rem;
+                text-transform: uppercase;
+            }
+            img {
+                width: 20px;
+                height: 20px;
+            }
+            // ///////////////////////////////////////////////////////////
+            .artist-status {
+                font-family: "Shapiro 55 Middle";
+            }
+            //////////////////////////////////////////////////////////////ПРОВІРИТИ
+        }
+        .artist-status {
+            font-family: "Shapiro 55 Middle";
+            font-size: 0.75rem;
+            color: $color-text-grey;
+        }
+    }
+}
+
+//////////////////////////////
+// SECTION START COLLECTION //
+//////////////////////////////
+.section-start-collection {
+    padding-top: 75px;
+    padding-bottom: 44px;
+
+    border-bottom: 1px solid #353945;
+
+    background-image: url("../img/start-collectionBG.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.section-border {
+    // &.full-screen {
+    //   flex-shrink: 0;
+    // }
+    width: 100%;
+    height: 16px;
+    background: linear-gradient(
+                    90deg,
+                    rgba(28, 112, 222, 1) 0%,
+                    rgba(155, 72, 128, 1) 62%,
+                    rgba(195, 60, 100, 1) 86%,
+                    rgba(220, 59, 84, 1) 100%
+    );
+}
+
+.start-block {
+    display: flex;
+    justify-content: space-between;
+}
+.start-txt {
+    margin-top: 45px;
+    margin-bottom: 72px;
+    h2 {
+        margin-bottom: 14px;
+    }
+    p {
+        font-family: "Shapiro 45 Welter";
+        font-size: 0.875rem;
+        color: $color-white;
+    }
+}
+
+.start-button__block {
+    .sign-up {
+        margin-right: 14px;
+        @include buttonBlue;
+    }
+    .login {
+        padding: 7px 27px 10px;
+
+        border: 2px solid $color-blue;
+
+        font-size: 0.875rem;
+        color: $color-white;
+
+        border-radius: 25px;
+        font-family: "Shapiro 75 Heavy";
+    }
+}
+
+.start-img__block {
+    img {
+        width: 400px;
+        height: 353px;
+    }
+}
+
+////////////////////////
+// SIGN-UP LOGIN PAGE //
+////////////////////////
+.enter-container {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+
+    .how-toBg {
+        position: absolute;
+
+        width: 100%;
+        height: 100vh;
+
+        opacity: 0.1;
+        z-index: -1;
+    }
+    .enter-main {
+        flex: 1 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .enter-block {
+        width: 57.5%;
+
+        background-color: $color-white;
+
+        border-radius: 20px;
+        border-top: 4px solid #8b23e7;
+        .enter-block__header {
+            padding-top: 50px;
+            padding-right: 55px;
+            padding-left: 55px;
+            margin-bottom: 38px;
+        }
+        .enter-block__body {
+            display: flex;
+            flex-direction: column;
+
+            padding-right: 55px;
+            padding-left: 55px;
+            margin-bottom: 40px;
+
+            .enter-title {
+                margin-bottom: 38px;
+
+                color: #4f3f71;
+                font-size: 1.5rem;
+                font-weight: 700;
+            }
+            .continue {
+                display: flex;
+                align-items: center;
+                padding-left: 20px;
+                padding-top: 20px;
+                padding-bottom: 20px;
+
+                border-radius: 8px;
+            }
+            .logo__img {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                width: 40px;
+                height: 40px;
+
+                margin-right: 15px;
+
+                background-color: $color-white;
+                border-radius: 50%;
+            }
+            .continue-google {
+                margin-bottom: 20px;
+
+                color: $color-white;
+                font-weight: 500;
+
+                background-color: #4285f4;
+            }
+
+            .using-email {
+                margin-bottom: 20px;
+
+                color: #4f3f71;
+                font-weight: 500;
+
+                background-color: #f8f8f8;
+                border: 1px solid #eae8ed;
+            }
+
+            .already-have {
+                margin-bottom: 40px;
+                color: #a19ea9;
+                text-decoration: underline;
+            }
+
+            .terms-privacy {
+                font-size: 12px;
+                color: #766f81;
+                a {
+                    color: #a19ea9;
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        .enter-block__footer {
+            padding: 10px 55px 45px 55px;
+
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+
+            text-align: center;
+            a {
+                color: #766f81;
+                font-weight: 500;
+            }
+
+            background-color: #f8f8f8;
+        }
+    }
+
+    .section-border {
+        flex-shrink: 0;
+    }
+}
+/////////////////
+// LOGGED PAGE //
+/////////////////
+.greeting-user__block {
+    margin-top: 85px;
+    margin-bottom: 38px;
+
+    font-family: "Shapiro 85 Super Heavy Wide";
+    font-size: 3.312rem;
+    color: $color-white;
+}
+.logged-latest__block {
+    margin-top: 167px;
+}
+
+.logged-latest__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+
+    a {
+        font-family: "Shapiro 65 Light Heavy";
+        font-size: 0.875rem;
+        color: $color-white;
+        text-transform: uppercase;
+        text-decoration: underline;
+    }
+}
+.how-it-work {
+    margin-top: 120px;
+}
+.how-it-work__block {
+    display: flex;
+    position: relative;
+    padding: 53px 52px;
+    margin-top: 35px;
+    border: 1px solid #707070;
+    border-radius: 12px;
+    background: linear-gradient(
+                    180deg,
+                    rgba(11, 11, 12, 1) 0%,
+                    rgba(23, 29, 35, 1) 40%,
+                    rgba(29, 37, 73, 1) 100%
+    );
+    &:after {
+        content: "";
+        position: absolute;
+        // top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 208px;
+        background-image: url("../img/sound-wave.png");
+        background-repeat: no-repeat;
+        // background-position: 0 200%;
+        // z-index: 1;
+    }
+    .logo-block {
+        display: flex;
+        align-items: center;
+        width: 50%;
+        img {
+            width: 366px;
+            height: 70px;
+        }
+    }
+    .txt-block {
+        width: 50%;
+        .txt-block__title {
+            margin-bottom: 14px;
+            font-family: "Shapiro 65 Light Heavy Wide";
+            font-size: 2.312rem;
+            line-height: 37px;
+            color: $color-white;
+        }
+        .txt-block__txt {
+            margin-bottom: 39px;
+            font-family: "Shapiro 45 Welter";
+
+            font-size: 0.875rem;
+            line-height: 16px;
+            color: $color-white;
+        }
+    }
+    a {
+        @include buttonBlue;
+    }
+}
+.set-one__logged {
+    background: #000;
+    .bg-txt {
+        top: 195px;
+        height: 200px;
+    }
+    .set-state {
+        background: #777e91;
+    }
+    .common {
+        margin-top: 10px;
+    }
+}
+
+.set-two__logged {
+    background: #000;
+}
+
+.artist-newest__block {
+    position: relative;
+    display: flex;
+    // justify-content: space-between;
+    align-items: center;
+    // height: 600px;
+    overflow: hidden;
+
+    &:after {
+        content: "";
+        position: absolute;
+        // top: 5%;
+        left: -15%;
+        display: block;
+        width: 100%;
+        height: 510px;
+
+        background-image: url("../img/test-ar.png");
+        background-position: 100% 55%;
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        opacity: 0.7;
+        z-index: -2;
+    }
+}
+
+.artist-newest__img {
+    width: 57%;
+    margin-left: 13.5%;
+    &:before {
+        content: "";
+        position: absolute;
+        top: 2%;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 700px;
+
+        background-image: url("../img/group-text.png");
+        background-position: 20% 20%;
+        // background-size: cover;
+        background-repeat: no-repeat;
+
+        z-index: -1;
+    }
+    img {
+        width: 580px;
+        height: 580px;
+        clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        background-size: contain;
+        position: relative;
+        // left: -125px;
+        // top: -130px;
+    }
+}
+.artist-newest__desk {
+    width: 30%;
+
+    // margin-left: 20%;
+    // align-self: flex-end;
+    color: $color-white;
+    .artist-newest__name {
+        margin-bottom: 15px;
+
+        font-family: "Shapiro 85 Super Heavy Wide";
+        font-size: 3.312rem;
+        text-transform: uppercase;
+        line-height: 50px;
+    }
+    .artist-txt__desk {
+        font-family: "Shapiro 55 Middle";
+        font-style: 0.875rem;
+        margin-bottom: 22px;
+        padding-right: 10px;
+    }
+    img {
+        width: 113px;
+        height: 126px;
+
+        margin-bottom: 40px;
+    }
+
+    .explore-artist__link {
+        @include buttonBlue;
+    }
+}
+.artist-section {
+    padding-bottom: 88px;
+}
+.artist-row {
+    &.row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    display: flex;
+    justify-content: space-between;
+}
+.artist-block__img {
+    width: 820px;
+    height: 600px;
+    background-image: url("../img/artist-img.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.artist-block__txt {
+    color: $color-white;
+    .artist-name {
+        margin-bottom: 12px;
+
+        font-family: "Shapiro 75 Heavy Wide";
+        font-size: 2.375rem;
+    }
+
+    .artist-desc {
+        width: 85%;
+        font-family: "Shapiro 45 Welter";
+        font-size: 0.875rem;
+        margin-bottom: 50px;
+    }
+
+    .find-pack {
+        @include buttonBlue;
+    }
+}
+////////////////////
+// DROP MAIN PAGE //
+////////////////////
+.how-to-action {
+    &.drop {
+        padding: 128px 0 134px;
+
+        h2 {
+            margin-bottom: 52px;
+        }
+
+        .how-toBg {
+            background-size: 100% 100%;
+        }
+    }
+}
+////////////////////
+// DROP JOIN PAGE //
+////////////////////
+
+.back-sub-nav {
+    padding: 24px 0 24px;
+    background-color: #141416;
+
+    border-bottom: 1px solid #353945;
+    .back-sub-nav__block {
+        width: 165px;
+        &.back-sub-nav__item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            p {
+                font-family: "Shapiro 95 Super";
+                font-size: 0.875rem;
+                color: $color-white;
+            }
+        }
+        &.line {
+            width: 175px;
+        }
+    }
+    .back-to-pack__link {
+        display: flex;
+        align-items: center;
+
+        padding: 7px 26px 11px 21px;
+        font-family: "Shapiro 55 Middle";
+        font-size: 0.875rem;
+        color: $color-white;
+
+        border: 2px solid #353945;
+        border-radius: 20px;
+        i {
+            margin-right: 16px;
+            font-size: 9px;
+            color: #777e8f;
+        }
+    }
+}
+.drop-main__container {
+    position: relative;
+    overflow: hidden;
+}
+.drop-main__wrapper {
+    // display: flex;
+    // justify-content: space-between;
+}
+
+.drop-main__header {
+    display: flex;
+    justify-content: space-between;
+    // width: 580px;
+    // margin-bottom: 136px;
+
+    &:before {
+        content: "";
+        background: linear-gradient(180deg, #706896 8%, #21a2be 100%);
+
+        position: absolute;
+        top: 0px;
+        bottom: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        max-height: 640px;
+
+        z-index: -1;
+    }
+
+    &:after {
+        content: "";
+        background-image: url("../img/beatoken.png");
+        background-size: 900px;
+        position: absolute;
+        top: 0px;
+        bottom: 0;
+
+        right: -35%;
+        display: block;
+        width: 100%;
+        max-height: 640px;
+
+        z-index: -1;
+    }
+
+    .drop-header__img-block {
+        padding: 90px 0 126px;
+    }
+}
+
+.drop-main__aside {
+    position: relative;
+    width: 500px;
+    padding: 51px 52px 0 62px;
+
+    background-color: #23262f;
+    &:after {
+        content: "";
+        background-color: #23262f;
+
+        position: absolute;
+        top: 680px;
+        // bottom: 0;
+        margin-left: -62px;
+        display: block;
+        width: 500px;
+        height: 200%;
+
+        z-index: 1;
+    }
+    .aside-title__block {
+        padding-bottom: 16px;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #353945;
+        .set-state {
+            font-family: "Shapiro 45 Welter Wide";
+            font-size: 0.562rem;
+            text-transform: uppercase;
+            color: $color-white;
+
+            border-radius: 100rem;
+
+            padding: 1px 10px 3px;
+
+            box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
+            border: solid 3px transparent;
+            background-image: linear-gradient(
+                            rgba(255, 255, 255, 0),
+                            rgba(255, 255, 255, 0)
+            ),
+            linear-gradient(101deg, #1c70de, #dc3b54);
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            box-shadow: 2px 1000px 1px #23262f inset;
+        }
+        .aside-pack__title {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            line-height: 44px;
+            font-family: "Shapiro 65 Light Heavy Wide";
+            font-size: 3.125rem;
+            color: $color-white;
+        }
+        .total-for-sale {
+            margin-bottom: 10px;
+
+            font-family: "Shapiro 55 Middle";
+            font-size: 1.125rem;
+            color: #777e91;
+        }
+
+        .pack-desc {
+            font-family: "Shapiro 55 Middle";
+            font-size: 1.125rem;
+            color: $color-white;
+        }
+    }
+    .aside-count__block {
+        padding-bottom: 16px;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #353945;
+
+        .pack-sum {
+            display: flex;
+            justify-content: space-between;
+
+            font-family: "Shapiro 55 Middle";
+            font-size: 1.125rem;
+            color: #777e91;
+
+            .pack-sum-left {
+                span {
+                    padding-right: 5px;
+                }
+                color: #d13a5a;
+            }
+        }
+        .pack-price {
+            font-family: "Shapiro 95 Super";
+            font-size: 1.875rem;
+            color: $color-white;
+            margin-bottom: 37px;
+        }
+        .quantity-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .quantity {
+                font-family: "Shapiro 55 Middle";
+                font-size: 1.125rem;
+                color: #777e91;
+            }
+            margin-bottom: 22px;
+        }
+        .quantity-input__block {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 153px;
+            padding: 10px 10px;
+            background-color: #353945;
+            border-radius: 30px;
+            &.sum {
+                justify-content: center;
+                color: $color-white;
+                font-family: "Shapiro 75 Heavy";
+                font-size: 1.125rem;
+            }
+            .input-button {
+                font-size: 0.875rem;
+                color: #777e91;
+
+                cursor: pointer;
+            }
+
+            .input-quantity {
+                width: 50px;
+                display: block;
+                padding-left: 20px;
+                font-family: "Shapiro 75 Heavy";
+                font-size: 1.125rem;
+                color: $color-white;
+
+                border: none;
+                background: none;
+                outline: none;
+            }
+
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+            input[type="number"] {
+                -moz-appearance: textfield;
+            }
+            // input {
+            //   width: 30px;
+            //   // padding-left: 15px;
+            //   // padding-right: 15px;
+            // }
+        }
+        .join-button {
+            width: 100%;
+            @include buttonBlue;
+            padding-top: 10px;
+            padding-bottom: 12px;
+
+            font-size: 1.062rem;
+
+            border: none;
+        }
+    }
+
+    .aside-logo__block {
+        display: flex;
+        align-items: center;
+
+        padding-bottom: 15px;
+        img {
+            margin-right: 10px;
+        }
+        .logo-txt {
+            span {
+                font-family: "Shapiro 55 Middle";
+                font-size: 1rem;
+                color: #777e91;
+            }
+            p {
+                font-family: "Shapiro 55 Middle Extd";
+                font-size: 1.125rem;
+                color: $color-white;
+
+                text-transform: uppercase;
+            }
+        }
+    }
+}
+
+.drop-details__block {
+    max-width: 570px;
+    margin-bottom: 136px;
+    font-family: "Shapiro 55 Middle";
+    font-size: 1.125rem;
+    color: $color-white;
+    .details-block__title {
+        padding: 15px 47px 26px;
+        margin-bottom: 31px;
+
+        font-family: "Shapiro 65 Light Heavy Wide";
+        font-size: 2.312rem;
+
+        background-color: #23262f;
+    }
+    .details-desc__block {
+        padding-left: 20px;
+
+        .txt {
+            margin-bottom: 25px;
+        }
+    }
+    .details-desc__title {
+        margin-bottom: 30px;
+    }
+}
+
+///////////////////////
+// SECTION OPEN PACK //
+///////////////////////
+.section-open-packs {
+    padding: 66px 0 82px;
+    text-align: center;
+
+    border-bottom: 1px solid #707070;
+    h2 {
+        margin-bottom: 57px;
+    }
+}
+
+.open-packs__block {
+    text-align: center;
+    color: $color-white;
+
+    h3 {
+        margin-bottom: 7px;
+        font-family: "Shapiro 75 Heavy";
+        font-size: 1.062rem;
+    }
+    p {
+        font-family: "Shapiro 45 Welter";
+        font-size: 0.875rem;
+    }
+    a {
+        color: #55b7ce;
+        text-decoration: underline;
+    }
+}
+
+.drop-full__screen-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 0 auto;
+
+    &.count {
+        position: relative;
+        overflow: hidden;
+        align-items: flex-start;
+        &:before {
+            content: "";
+            background: linear-gradient(180deg, #706896 8%, #21a2be 100%);
+
+            position: absolute;
+            top: 0px;
+            bottom: 0;
+            left: 0;
+            display: block;
+            width: 100%;
+            max-height: 100%;
+
+            z-index: -2;
+        }
+
+        &:after {
+            content: "";
+            background-image: url("../img/beatoken.png");
+            background-repeat: repeat;
+            background-size: 800px;
+
+            position: absolute;
+            top: 0px;
+            bottom: 0;
+            left: 25%;
+            right: -35%;
+            display: block;
+            width: 100%;
+            height: 100%;
+
+            z-index: -1;
+            opacity: 1;
+        }
+    }
+
+    &:after {
+        content: "";
+        background-image: url("../img/how-to-action_BG.png");
+        background-repeat: no-repeat;
+        // background-size: 100% 100%;
+        background-size: cover;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100vh;
+        z-index: -1;
+        opacity: 0.1;
+    }
+
+    .overlay {
+        // position: absolute;
+        position: absolute;
+        background-color: #fff;
+        border-radius: 50%;
+        z-index: 10;
+        // background-image: -webkit-gradient(
+        //   linear,
+        //   left top,
+        //   left bottom,
+        //   color-stop(6.3%, rgba(255, 255, 255, 0)),
+        //   color-stop(20.65%, rgba(255, 255, 255, 0.774)74)),
+        //   color-stop(96.66%, rgba(255, 255, 255, 0))
+        // );
+
+        // position: absolute;
+        // top: 0;
+        // left: 0;
+        // opacity: 0;
+        // // width: 100%;
+        // // height: 100%;
+        // background-color: #fff;
+        // z-index: -1;
+        // -webkit-box-shadow: 0px 0px 98px 68px rgba(0, 255, 19, 0.2);
+        // -moz-box-shadow: 0px 0px 98px 68px rgba(0, 255, 19, 0.2);
+        // box-shadow: 0px 0px 98px 68px rgba(0, 255, 19, 0.2);
+
+        // &.full-page {
+        //   position: absolute;
+        //   // border-radius: 0;
+        //   width: 3000px;
+        //   // margin-top: 0;
+        //   // margin-left: 0;
+        //   height: 3000px;
+        //   background-size: 3000px 1500px;
+        //   // -webkit-transition: margin 10s cubic-bezier(0, 2, 1, 0.98),
+        //   //   width 10s cubic-bezier(0, 2, 1, 0.98),
+        //   //   height 10s cubic-bezier(0, 2, 1, 0.98), background-size 10s linear,
+        //   //   border-radius 10s linear;
+        //   background-image: linear-gradient(
+        //     180deg,
+        //     rgba(255, 255, 255, 0) 6.3%,
+        //     rgba(255, 255, 255, 0.774) 20.65%,
+        //     rgba(255, 255, 255, 96.6%) 100%
+        //   );
+        //   background-position: center center;
+        //   background-repeat: no-repeat;
+        //   background-size: 3000px 1500px;
+        //   /* -webkit-transition: all 700ms ease; */
+        //   transition: all 5000ms ease;
+        //   top: 0;
+        //   left: 25%;
+        //   border-radius: 100%;
+        //   pointer-events: none;
+        //   z-index: 2;
+        // }
+        // .grow-image.grow img {
+        //   -webkit-clip-path: circle(100% at center center);
+        //   clip-path: circle(100% at center center);
+        //   -webkit-transition: 0.5s;
+        //   transition: 0.5s;
+        // }
+        // width: 100%;
+        // height: 100%;
+        // opacity: 1; // border-radius: unset;
+        // z-index: 2;
+        // transition: all 0.5s;
+        //   animation: 1.2s ease-in-out 0s normal none infinite running
+        //   trambling-animation;
+
+        // @keyframes drawframeLeft {
+        //   0% {
+        //     top: 0;
+        //     bottom: auto;
+        //     height: 100%;
+        //   }
+        //   12.5% {
+        //     top: 0;
+        //     bottom: auto;
+        //     height: 0%;
+        //   }
+        //   50% {
+        //     top: auto;
+        //     bottom: 0;
+        //     height: 0%;
+        //   }
+        //   62.5% {
+        //     top: auto;
+        //     bottom: 0;
+        //     height: 100%;
+        //   }
+        //   100% {
+        //     top: auto;
+        //     bottom: 0;
+        //     height: 100%;
+        //   }
+        // }
+        // }
+    }
+
+    .open-block {
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+
+        // .open-reveal__container {
+        //   display: flex;
+        //   justify-content: space-between;
+        //   width: 100%;
+
+        // .open-reveal__video {
+        // }
+    }
+    // .open-pack__video {
+    //   display: none;
+    //   width: 400px;
+    //   height: 400px;
+    // }
+    .open-pack__img {
+        margin-top: 50px;
+        padding: 20px;
+        margin-bottom: 57px;
+        width: 307px;
+        height: 363px;
+        &.open-pack__img-trembling {
+            animation: 1.2s ease-in-out 0s normal none infinite running
+            trembling-animation;
+
+            @keyframes trembling-animation {
+                0%,
+                50%,
+                100% {
+                    transform: rotate(0deg);
+                }
+                10%,
+                30% {
+                    transform: rotate(-10deg);
+                }
+                20%,
+                40% {
+                    transform: rotate(10deg);
+                }
+            }
+        }
+        &.rotateY {
+            -webkit-transform: rotateY(180deg);
+            -ms-transform: rotateY(180deg);
+            transform: rotateY(820deg);
+            -webkit-animation-delay: 2s;
+            animation-delay: 2s;
+            animation: notransform 2s infinite;
+            @keyframes notransform {
+                50% {
+                    transform: none;
+                }
+            }
+        }
+    }
+    a {
+        @include buttonBlue;
+        margin-bottom: 50px;
+    }
+}
+.reveal-block {
+    display: none;
+}
+.reveal-list {
+    display: flex;
+    justify-content: center;
+
+    .reveal-item {
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+}
+
+.drop-count__container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 60px 0 60px;
+    width: 50%;
+    min-height: calc(100vh - 108px);
+    background-color: #23262f;
+    .drop-count-wrapper {
+        flex: 1 0 auto;
+    }
+    .drop-count__logo-block {
+        display: flex;
+        padding-bottom: 16px;
+
+        border-bottom: 2px solid #353945;
+        .img-logo {
+            margin-right: 10px;
+        }
+    }
+
+    .drop-count__title-block {
+        padding-bottom: 32px;
+
+        border-bottom: 2px solid #353945;
+        h3 {
+            margin: 20px 0 15px;
+
+            font-family: "Shapiro 65 Light Heavy Wide";
+            font-size: 1.625rem;
+            color: $color-white;
+        }
+        .pack-sale {
+            margin-bottom: 10px;
+            font-family: "Shapiro 55 Middle";
+            font-size: 0.75rem;
+            color: $color-text-grey;
+            span {
+                margin-right: 5px;
+            }
+        }
+        .pack-desc {
+            font-family: "Shapiro 55 Middle";
+            font-size: 1rem;
+            color: $color-white;
+        }
+    }
+    .drop-count__progress-block {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        width: 100%;
+        height: 6px;
+
+        .progress {
+            display: flex;
+            height: 10px;
+            overflow: hidden;
+            font-size: 0.75rem;
+            background-color: #353945;
+            border-radius: unset;
+            border: 1px solid #707070;
+            .progress-bar {
+                height: 10px;
+                background-color: #1c70de;
+            }
+        }
+    }
+    .drop-count__count-block {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding-bottom: 16px;
+        margin-top: 40px;
+
+        border-bottom: 2px solid #353945;
+        img {
+            padding: 20px 0 20px;
+            margin-bottom: 40px;
+
+            width: 200px;
+            height: 260px;
+        }
+        .event-start {
+            margin-bottom: 20px;
+            font-family: "Shapiro 65 Light Heavy";
+            font-size: 1rem;
+            color: $color-white;
+            span {
+                margin-left: 10px;
+            }
+        }
+        .user-in-line {
+            font-family: "Shapiro 65 Light Heavy";
+            font-size: 1.062rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+
+            font-size: 1rem;
+            color: $color-white;
+        }
+
+        .event-timer__block {
+            width: 100%;
+            padding: 0 32px 15px 32px;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            border-radius: 40px;
+            background-color: #353945;
+            .in-line {
+                display: flex;
+                justify-content: space-around;
+
+                font-family: "Shapiro 95 Super";
+                font-size: 2.812rem;
+                color: $color-white;
+            }
+            .timer {
+                display: flex;
+                justify-content: space-around;
+                // align-items: flex-end;
+                // width: 80%;
+                font-family: "Shapiro 95 Super";
+                font-size: 2.812rem;
+                color: $color-white;
+                span {
+                    margin-left: 10px;
+                    font-family: "Shapiro 65 Light Heavy Wide";
+                    font-size: 1.625rem;
+                }
+            }
+        }
+        .status-update {
+            font-family: "Shapiro 55 Middle";
+            font-size: 1.125rem;
+            color: $color-text-grey;
+            span {
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        }
+    }
+    .message-updated__block {
+        padding: 16px 36px 26px;
+        margin-top: 10px;
+        margin-bottom: 40px;
+
+        font-family: "Shapiro 35 Feather";
+        font-size: 1rem;
+        color: $color-white;
+        background-color: #1c70de;
+        border-radius: 10px;
+        .message-update__title {
+            margin-bottom: 10px;
+        }
+    }
+    .live-line__block {
+        width: 100%;
+        text-align: center;
+        .live-line__link {
+            align-self: center;
+            font-family: "Shapiro 75 Heavy";
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            color: $color-white;
+            border-bottom: 2px solid $color-white;
+        }
+    }
+}
+
+.queue-id {
+    flex-shrink: 0;
+    margin-top: 150px;
+    margin-bottom: 5px;
+    font-family: "Shapiro 55 Middle";
+    font-size: 1.125rem;
+    color: $color-text-grey;
+    span {
+        margin-left: 5px;
+    }
+}
+
+.open-container__title {
+    margin-top: 27px;
+    p {
+        font-family: "Shapiro 55 Middle";
+        font-size: 0.75rem;
+        color: $color-text-grey;
+        span {
+            margin-left: 5px;
+        }
+    }
+    h3 {
+        margin-top: 16px;
+        margin-bottom: 5px;
+
+        font-family: "Shapiro 65 Light Heavy Wide";
+        font-size: 2.312rem;
+        color: $color-white;
+    }
+}
+
+.drop-redirect {
+    font-family: "Shapiro 65 Light Heavy Wide";
+    font-size: 2.187rem;
+    color: $color-white;
+
+    text-align: center;
+}
+
+///////////////////
+// SECTION PACKS //
+///////////////////
+.section-packs {
+    padding: 63px 0 94px;
+    background-color: $color-dark-black;
+    .packs-title {
+        margin-bottom: 48px;
+        color: $color-white;
+    }
+}
+
+.featured-packs {
+    margin-bottom: 94px;
+}
+
+.previous-packs {
+    .packs-title {
+        .section-drop-title {
+            margin-bottom: 5px;
+        }
+    }
+    p {
+        max-width: 447px;
+        font-family: "Shapiro 45 Welter";
+        font-size: 0.875rem;
+    }
+
+    .button-block {
+        display: flex;
+        justify-content: center;
+        .view-more {
+            position: relative;
+
+            padding: 0;
+
+            font-family: "Shapiro 75 Heavy";
+            font-size: 0.875rem;
+            color: $color-white;
+
+            text-transform: uppercase;
+
+            background: none;
+            border: none;
+            &:after {
+                position: absolute;
+                bottom: -5px;
+                right: 0;
+                left: 0;
+
+                content: "";
+                width: 100%;
+                height: 2px;
+                background-color: $color-white;
+            }
+        }
+    }
+}
+
+.packs-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 33px;
+    &.previous-list {
+        margin-bottom: 57px;
+    }
+}
+
+.pack-item {
+    padding: 27px 16px 16px 16px;
+    background-color: #000;
+    border-radius: 12px;
+    color: $color-white;
+    &:last-child {
+        margin-right: 0;
+    }
+    .img-pack {
+        display: flex;
+        justify-content: center;
+
+        margin-bottom: 40px;
+    }
+    .pack-title {
+        margin-bottom: 5px;
+        font-family: "Shapiro 75 Heavy Wide";
+        font-size: 0.875rem;
+        text-transform: uppercase;
+    }
+
+    .pack-set {
+        display: block;
+        margin-bottom: 24px;
+
+        font-family: "Shapiro 55 Middle";
+        font-size: 0.75rem;
+        color: $color-text-grey;
+    }
+
+    .pack-price {
+        font-family: "Shapiro 95 Super";
+        font-size: 1rem;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #353945;
+    }
+
+    .pack-quantity {
+        margin-top: 5px;
+
+        font-family: "Shapiro 55 Middle";
+        font-size: 0.75rem;
+
+        &.left {
+            color: $color-text-grey;
+        }
+        &.sold {
+            color: #d13a5a;
+        }
+    }
+}
+/////////////////////
+// COLLECTION PAGE //
+/////////////////////
+.collection-wrapper {
+    &:before {
+        content: "";
+        background-image: url("../img/abst-collection.png");
+        background-repeat: no-repeat;
+        background-size: 112%;
+        background-position: 20% 100%;
+        position: absolute;
+        top: 81px;
+        bottom: 0;
+
+        display: block;
+        width: 100%;
+        max-height: 326px;
+        z-index: -1;
+    }
+}
+.collection-container {
+    display: flex;
+    position: relative;
+    padding-top: 212px;
+    overflow: hidden;
+}
+.aside-user {
+    display: flex;
+
+    flex-direction: column;
+
+    width: 256px;
+
+    padding: 43px 28px 27px 28px;
+
+    margin-right: 32px;
+    margin-bottom: 40px;
+
+    background-color: #23262e;
+
+    border: 1px solid #353944;
+    border-radius: 20px;
+    .user-avatar__block {
+        display: flex;
+        justify-content: center;
+        img {
+            width: 160px;
+            height: 160px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+        }
+    }
+    .user-edit__container {
+        padding: 0 10px 50px 10px;
+
+        border-bottom: 1px solid #353944;
+        .user-info {
+            margin-bottom: 43px;
+            text-align: center;
+            .user-name {
+                font-family: "Shapiro 35 Feather";
+                font-size: 1.5rem;
+                color: $color-white;
+            }
+            .user-nikname {
+                font-family: "Shapiro 55 Middle";
+                font-size: 0.875rem;
+                color: $color-text-grey;
+            }
+        }
+    }
+    .user-edit__btn-block {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 33px;
+        .edit-btn{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 121px;
+            height: 40px;
+
+            margin-bottom: 11px;
+
+
+            color: #fff;
+
+            background-color: #1C70DE;
+
+            transition: all 0.2s;
+            border-radius: 20px;
+            &:hover{
+                background-color: #E5E7EB;
+                color: #141416;
+            }
+
+            // @include buttonBlue;
+            &.change-avatar {
+                width: 100%;
+                text-align: center;
+            }
+        }
+        // .share-profile {
+        //     font-size: 1rem;
+        //     color: $color-text-grey;
+        //     border: 1px solid $color-text-grey;
+        //     border-radius: 50%;
+        //     padding: 5px;
+        // }
+    }
+    .user-share__block {
+        display: flex;
+        justify-content: space-between;
+        a {
+            font-size: 1.125rem;
+            color: $color-text-grey;
+            cursor: pointer;
+            transition: all 0.2s;
+            &:hover{
+                color: #fff;
+            }
+        }
+    }
+    .member-date {
+        text-align: center;
+        margin-top: 20px;
+        font-family: "Shapiro 55 Middle";
+        font-size: 0.875rem;
+        color: $color-text-grey;
+        span {
+            padding-left: 3px;
+        }
+    }
+}
+.main-profile {
+    width: 100%;
+    padding-top: 108px;
+}
+
+.create-nft__container{
+    margin: auto;
+    width: 57%;
+
+    .tox-tinymce{
+        width: 70%;
+        border-radius: 20px;
+    }
+
+    .cover-img__block{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        padding-bottom: 25px;
+        margin-bottom: 28px;
+
+        border-bottom: 1px solid #353944;
+        .cover-img{
+            width: 142px;
+            height: 142px;
+
+            margin-bottom: 20px;
+
+            background-color: #272B33;
+            border-radius: 20px;
+        }
+
+        .cover-title{
+            color:#fff;
+            margin-bottom: 20px;
+        }
+
+
+    }
+    .upload-btn{
+        padding: 10px 16px 10px 16px;
+        border-radius: 20px;
+        background-color: #1C70DE;
+        color: #fff;
+        cursor: pointer;
+        transition: all 0.2s;
+        border: none;
+        &:hover{
+            background-color: #d5d7db;
+            color: #141416;
+        }
+    }
+
+    .create-nft__block {
+
+        padding: 0 20px 28px 20px;
+        margin-bottom: 30px;
+
+        border-bottom: 1px solid #353944;
+
+        color: #fff;
+
+        .inputs-nft__block{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 20px;
+            &.textarea{
+                align-items: unset;
+            }
+        }
+        label{
+
+            width: 20%;
+
+        }
+        input{
+            width: 70%;
+            align-self: flex-end;
+            padding: 11px 10px 11px 24px;
+            font-family: "Shapiro 55 Middle";
+            font-size: 0.875rem;
+
+            color: #fff;
+            background-color: #272B33;
+            border: 1px solid #353945;
+            border-radius: 20px;
+
+            &:active, &:focus{
+
+                box-shadow: unset;
+            }
+        }
+        select{
+            width: 70%;
+            align-self: flex-end;
+            padding: 11px 10px 11px 24px;
+            font-family: "Shapiro 55 Middle";
+            font-size: 0.875rem;
+
+            color: #fff;
+            background-color: #272B33;
+            border: 1px solid #353945;
+            border-radius: 20px;
+
+            &:active, &:focus{
+
+                box-shadow: unset;
+            }
+        }
+        //    textarea{
+        //        height: 120px;
+        //        color: #fff;
+        //        resize: none;
+        //        background-color: #272B33;
+        //        border: 1px solid #353945;
+        //        &:active, &:focus{
+
+        //            box-shadow: unset;
+        //        }
+        //    }
+
+
+
+    }
+    .creator-avatar__block{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 20px 28px 20px;
+        margin-bottom: 30px;
+
+        border-bottom: 1px solid #353944;
+        .creator-avatar__title{
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        .creator-avatar__upload-img{
+            display: flex;
+            align-items: center;
+
+            .upload-img{
+                width: 76px;
+                height: 76px;
+
+                background-color: #272B33;
+                border-radius: 50%;
+                margin-right: 20px;
+            }
+        }
+    }
+}
+
+.sort-container__profile {
+    padding-top: 67px;
+    margin-bottom: 25px;
+}
+
+.main-sort__block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    &.marketplace {
+        padding-bottom: 35px;
+        border-bottom: 1px solid $color-dark-grey;
+    }
+    .type-packs__block {
+        display: flex;
+        // width: 50%;
+        .type-change {
+            margin-right: 31px;
+            padding: 2px 11px 6px;
+            font-family: "Shapiro 55 Middle";
+            font-size: 0.875rem;
+            color: $color-text-grey;
+
+            transition: all 0.5s;
+            border-radius: 30px;
+            &.active {
+                color: #141416;
+                background-color: #e5e7eb;
+            }
+            &:hover {
+                color: #141416;
+                background-color: #e5e7eb;
+            }
+        }
+    }
+
+
+    .create-nft__desk-block{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .tariff-plan__filter-block {
+        display: flex;
+        align-items: center;
+        margin-left: 38px;
+        .tariff-plan__btn {
+            padding: 1px 12px 7px 12px;
+            margin-right: 10px;
+            &:last-child {
+                margin-right: 0;
+            }
+            font-family: "Shapiro 55 Middle";
+            font-size: 0.812rem;
+            color: $color-text-grey;
+
+            border: none;
+            background: none;
+            border-radius: 30px;
+            &.active {
+                background-color: $color-dark-grey;
+                color: $color-white;
+            }
+            &:hover {
+                background-color: $color-dark-grey;
+                color: $color-white;
+            }
+        }
+    }
+    .sort-types {
+        display: flex;
+        // width: 50%;
+        .clear-all {
+            margin-right: 10px;
+            font-family: "Shapiro 65 Light Heavy";
+            font-size: 0.875rem;
+            color: $color-white;
+            background: none;
+            border: none;
+            text-decoration: underline;
+            text-transform: uppercase;
+        }
+        .show-filter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 140px;
+
+            padding-top: 10px;
+            padding-bottom: 15px;
+            margin-right: 21px;
+
+            cursor: pointer;
+            &.marketplace {
+                margin-right: 0;
+                height: auto;
+            }
+        }
+    }
+}
+.additional-sort {
+    display: none;
+
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: center;
+    margin-top: 23px;
+    &.additional-sort__marketplace {
+        grid-template-columns: repeat(4, 1fr);
+        .form-select {
+            max-height: 48px;
+        }
+    }
+    .selects-block {
+        display: flex;
+        justify-content: space-between;
+        width: 75%;
+    }
+    .range-block {
+        width: 100%;
+        font-family: "Shapiro 55 Middle";
+        text-transform: uppercase;
+        .range-title {
+            font-size: 0.75rem;
+            color: #b1b5c4;
+        }
+        .range-price__txt {
+            display: flex;
+            justify-content: space-between;
+
+            font-size: 0.875rem;
+            color: $color-white;
+        }
+        ///////////////////////////////////////////////////////////////////
+        .rangewrapper {
+            position: relative;
+
+            width: 100%;
+            height: 7px;
+
+            margin: 13px 0 10px 0;
+            padding: 0;
+
+            overflow: visible;
+            background-color: #353945;
+            .sliderfill {
+                height: 7px;
+
+                margin: 0;
+                padding: 0;
+                border: 0 none;
+            }
+            .sliderthumb {
+                position: absolute;
+                left: 0;
+                top: calc(((15.5px - 10px) / -2) - 2px);
+
+                width: 15.5px;
+                height: 15.5px;
+
+                padding: 0;
+
+                background-color: #353945;
+                border: 2px solid #fff;
+
+                pointer-events: none;
+            }
+
+            .slidervalue {
+                color: $color-white;
+            }
+
+            .customrange {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+
+                cursor: pointer;
+
+                opacity: 0;
+            }
+        }
+        ///////////////////////////////////////////////////////////////////////////////
+    }
+    &.active {
+        display: grid;
+    }
+    // .form-select {
+    //   width: unset;
+    //   padding: 10px 52px 16px 23px;
+
+    //   background: #161b22;
+    //   background-image: url("../img/icon-down-rounded.svg");
+    //   background-repeat: no-repeat;
+    //   background-position: right 0.75rem center;
+
+    //   &:focus {
+    //     outline: none;
+    //     box-shadow: none;
+    //     border: 2px solid #353945;
+    //   }
+    // }
+}
+.music-card__empty-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 130px;
+    margin-bottom: 400px;
+    p {
+        font-family: "Shapiro 55 Middle";
+        font-size: 0.875rem;
+        color: $color-white;
+
+        margin-bottom: 20px;
+    }
+
+    .clear-filter {
+        @include buttonBlue;
+
+        border: none;
+    }
+}
+.music-card__container {
+    ul {
+        margin-bottom: 65px;
+    }
+    .empty-collection {
+        font-family: "Shapiro 55 Middle";
+        font-size: 0.875rem;
+        text-align: center;
+        color: $color-white;
+        margin-top: 65px;
+        margin-bottom: 400px;
+
+        .balance-container{
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+        }
+
+        .balance-container__title{
+            padding-bottom: 41px;
+            margin-bottom: 41px;
+            font-family: "Shapiro 65 Light Heavy Wide";
+            font-size: 2.312rem;
+            text-align: center;
+
+
+            border-bottom: 1px solid #353944;
+        }
+
+        .balance-block__input{
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+
+            padding-bottom: 24px;
+            margin-bottom: 41px;
+
+            border-bottom: 1px solid #353944;
+
+            .my-balance__block{
+                display: flex;
+                align-items: flex-start;
+                width: 50%;
+            }
+            .balance-title{
+                width: 30%;
+                font-family: "Shapiro 65 Light Heavy";
+                font-size: 0.875rem;
+                text-align: left;
+            }
+            .my-balance {
+                display: flex;
+                align-items: flex-start;
+
+                // width: 40%;
+
+                padding: 9px 19px 12px 19px;
+
+                font-size: 1rem;
+                background-color: #272B33;
+
+                border: 1px solid #353945;
+                border-radius: 20px;
+                span {
+                    padding-left: 20px;
+                }
+
+            }
+            .btn-balance__block{
+                display: flex;
+                justify-content: flex-end;
+                .btn-balance{
+                    @include buttonBlue;
+                    width: 142px;
+                    height: 38px;
+                    border: none;
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+            }
+
+
+        }
+
+
+
+
+        a {
+            @include buttonBlue;
+        }
+    }
+}
+
+.music-card__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    &.marketplace {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    a {
+        color: $color-white;
+    }
+}
+.music-card__item {
+    // width: 30%;
+    padding: 38px 9px 16px 9px;
+    // margin-bottom: 25px;
+    background-color: #0b0b0c;
+    border-radius: 12px;
+    color: $color-white;
+    &.for-sale {
+        padding: 16px 9px 16px 9px;
+        .for-sale__mark {
+            padding: 0 10px;
+            margin-left: 8px;
+            text-transform: uppercase;
+            font-size: 0.562rem;
+            color: #ff335a;
+            border: 1px solid #ff335a;
+            border-radius: 20px;
+        }
+    }
+    .music-img {
+        padding-bottom: 10px;
+        img {
+            width: 100%;
+            height: auto;
+
+            margin: 0 auto;
+        }
+    }
+    .music-desc__block {
+        padding-left: 8px;
+        padding-bottom: 9px;
+        border-bottom: 1px solid #353945;
+    }
+    .music-title {
+        font-family: "Shapiro 75 Heavy Wide";
+        font-size: 0.875rem;
+    }
+    .type {
+        margin-bottom: 10px;
+        font-family: "Shapiro 55 Middle";
+        font-size: 0.75rem;
+    }
+    .item-music__tariff-plan {
+        margin-bottom: 10px;
+        font-family: "Shapiro 75 Heavy";
+        font-size: 0.75rem;
+        .plan-icon {
+            padding: 0 10px;
+            margin-left: 5px;
+
+            font-size: 0.625rem;
+
+            border: 1px solid $color-white;
+            border-radius: 20px;
+        }
+    }
+
+    .sale-status {
+        font-family: "Shapiro 55 Middle";
+        font-size: 0.75rem;
+        color: $color-text-grey;
+    }
+    .item-music__price {
+        font-family: "Shapiro 95 Super";
+        font-size: 1rem;
+    }
+
+    .item-music__status {
+        padding: 7px 0 0 8px;
+        font-family: "Shapiro 55 Middle";
+        font-size: 0.75rem;
+        color: $color-text-grey;
+    }
+}
+
+.form-select {
+    width: unset;
+    padding: 10px 52px 16px 23px;
+
+    background: #161b22;
+    background-image: url("../img/icon-down-rounded.svg");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+
+    &:focus {
+        outline: none;
+        box-shadow: none;
+        border: 2px solid #353945;
+    }
+}
+.sort-btn {
+    font-family: "Shapiro 55 Middle";
+    font-size: 0.875rem;
+    color: $color-white;
+
+    border: 2px solid #353945;
+    border-radius: 12px;
+}
+
+.marketplace-title {
+    padding-top: 56px;
+    padding-bottom: 13px;
+    h3 {
+        font-family: "Shapiro 65 Light Heavy Wide";
+        font-size: 2.312rem;
+        color: $color-white;
+    }
+}
+
+// .owned-wrapper {
+//   position: relative;
+//   overflow-y: hidden;
+// }
+.pack-view__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+    "headerImage headerTitle"
+    "headerImage headerContent";
+    // gap: 40px 70px;
+
+    // display: flex;
+
+    margin-top: 80px;
+    margin-bottom: 141px;
+
+    &:after {
+        content: "";
+
+        position: absolute;
+        top: 0px;
+        bottom: 0;
+        right: 0;
+        display: block;
+        width: 50%;
+
+        z-index: -1;
+        height: 925px;
+
+        background-color: #23262f;
+    }
+}
+
+.pack-carousel__block {
+    display: flex;
+    grid-area: headerImage / headerImage / headerImage / headerImage;
+
+    .carousel-pack {
+        width: 444px;
+        .slick-arrow {
+            position: absolute;
+            top: 30%;
+            right: -59px;
+
+            border-radius: 50%;
+            padding: 12px 10px;
+            cursor: pointer;
+            &:hover {
+                border: 2px solid #777e91;
+            }
+            &.prev {
+            }
+            &.next {
+                right: -109px;
+            }
+        }
+    }
+
+    .slider-nav {
+        width: 370px;
+    }
+
+    .pack1 {
+        margin-bottom: 104px;
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+    .pack2.slick-slide.slick-current.slick-active {
+        padding-bottom: 15px;
+        // border-bottom: 2px solid #fff;
+        &:after {
+            content: " ";
+            position: absolute;
+            top: 115px;
+
+            width: 106px;
+            height: 3px;
+
+            background: linear-gradient(
+                            90deg,
+                            rgba(28, 112, 222, 1) 0%,
+                            rgba(155, 72, 128, 1) 59%,
+                            rgba(220, 59, 84, 1) 82%,
+                            rgba(195, 60, 100, 1) 100%
+            );
+        }
+    }
+
+    .pack2 {
+        outline: none;
+        cursor: pointer;
+        img {
+            width: 106px;
+            height: 106px;
+        }
+    }
+
+    // flex-direction: column;
+    // -webkit-box-pack: start;
+    // justify-content: start;
+    // .carousel-pack {
+    //   width: 593px;
+    //   .slider-for {
+    //     margin-bottom: 104px;
+    //     .pack1 {
+    //       img {
+    //         width: 444px;
+    //         height: 444px;
+    //       }
+    //     }
+    //   }
+    //   .slider-nav {
+    //     .pack2 {
+    //       img {
+    //         width: 106px;
+    //         height: 106px;
+    //         margin-right: 10px;
+    //       }
+    //     }
+
+    //     .slick-current {
+    //       border-bottom: 2px solid #fff;
+    //     }
+    //   }
+
+    //   // slick-active
+    // }
+    // .pack2.slick-slide {
+    //   cursor: pointer;
+    //   width: 106px;
+    //   padding-bottom: 14px;
+    //   margin-right: 23px;
+    //   &:last-child {
+    //     margin-right: 0;
+    //   }
+    //   &:hover {
+    //     border-bottom: 2px solid #fff;
+    //   }
+    // }
+}
+
+.pack-bottom__block {
+    position: relative;
+    grid-area: headerContent / headerContent/ headerContent/ headerContent;
+    width: 100%;
+
+    justify-self: start;
+
+    .price-rate__block {
+        margin-left: 70px;
+        padding-left: 20px;
+        .lowest-ask__block {
+            margin-bottom: 27px;
+            .price-title {
+                font-family: "Shapiro 55 Middle";
+                font-size: 1.125rem;
+                color: $color-text-grey;
+            }
+            .price {
+                font-family: "Shapiro 95 Super";
+                font-size: 1.875rem;
+                color: $color-white;
+            }
+        }
+    }
+}
+// .pack-options__block {
+//   width: 50%;
+//   padding-left: 82px;
+//   &:after {
+//     content: "";
+
+//     position: absolute;
+//     top: 0px;
+//     bottom: 0;
+//     right: 0;
+//     display: block;
+//     width: 50%;
+//     max-height: 981px;
+//     z-index: -1;
+//     background-color: #23262f;
+//   }
+.artist-desk {
+    padding-left: 20px;
+    margin-left: 70px;
+    margin-bottom: 30px;
+    color: $color-white;
+    .desk {
+        line-height: 24px;
+    }
+    .artist-name {
+        font-family: "Shapiro 65 Light Heavy Wide";
+        font-size: 3.75rem;
+
+        text-transform: uppercase;
+    }
+    p {
+        font-family: "Shapiro 55 Middle";
+        font-size: 1.125rem;
+    }
+}
+.tariff-plan__block {
+    padding-left: 20px;
+    margin: 0 90px 0 70px;
+    padding-bottom: 18px;
+
+    .tariff-plan {
+        padding-bottom: 30px;
+        font-family: "Shapiro 75 Heavy";
+        font-size: 0.75rem;
+        color: $color-white;
+        &.tariff-plan__card-view {
+            padding-bottom: 10px;
+
+            border-bottom: 1px solid #353945;
+        }
+        .plan-icon {
+            padding: 0 10px;
+            margin-left: 5px;
+            font-size: 0.625rem;
+            border: 1px solid #fff;
+            border-radius: 20px;
+        }
+    }
+}
+.owned-block {
+    padding-left: 20px;
+    margin: 0 90px 0 70px;
+    padding-bottom: 20px;
+
+    margin-bottom: 50px;
+    font-family: "Shapiro 55 Middle";
+    font-size: 1.125rem;
+    line-height: 24px;
+    color: $color-text-grey;
+
+    border-bottom: 1px solid #353945;
+    .owner-name {
+        font-size: 1.875rem;
+        color: $color-white;
+        span {
+            font-size: 1.125rem;
+            color: $color-text-grey;
+        }
+    }
+}
+
+.options-btn__block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 90px 80px 70px;
+    padding: 0 20px 0 20px;
+    button {
+        width: 100%;
+        padding: 7px 24px 10px;
+        margin-bottom: 12px;
+
+        font-family: "Shapiro 75 Heavy";
+        font-size: 0.875rem;
+        color: $color-white;
+
+        background: none;
+        border-radius: 20px;
+
+        transition: all 0.3s;
+        border: 1px solid #353945;
+        &:last-child {
+            margin-bottom: 0;
+        }
+        &:hover {
+            background: $color-blue;
+        }
+    }
+}
+.options-sale {
+    font-family: "Shapiro 55 Middle";
+    font-size: 1.125rem;
+    color: $color-text-grey;
+    text-align: center;
+}
+.options-trade {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0 20px;
+    margin: 0 90px 22px 70px;
+
+    font-family: "Shapiro 55 Middle";
+    font-size: 1.125rem;
+    color: $color-text-grey;
+    .option-sale__sold {
+        text-align: left;
+        span {
+            text-transform: uppercase;
+        }
+        p {
+            color: $color-white;
+        }
+    }
+    .option-sale__sale {
+        display: flex;
+        p {
+            padding-right: 5px;
+        }
+        span {
+            text-transform: uppercase;
+        }
+    }
+}
+
+.creator__block {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 22px 20px 0;
+    margin: 23px 90px 0 70px;
+
+    border-top: 1px solid #353945;
+    .txt {
+        span {
+            font-family: "Shapiro 55 Middle";
+            font-size: 0.75rem;
+            color: $color-text-grey;
+        }
+        P {
+            font-family: "Shapiro 55 Middle Extd";
+            font-size: 0.875rem;
+            color: $color-white;
+        }
+    }
+    .creator-artist {
+        display: flex;
+        align-items: center;
+        img {
+            width: 40px;
+            height: 40px;
+
+            margin-right: 10px;
+
+            border-radius: 50%;
+        }
+    }
+    .creator-certified {
+        display: flex;
+        align-items: center;
+
+        img {
+            width: 40px;
+            height: 40px;
+
+            margin-right: 10px;
+        }
+    }
+}
+// }
+.pack-details__container {
+    .desk-title {
+        padding: 15px 0 26px 71px;
+        margin-bottom: 32px;
+
+        font-family: "Shapiro 65 Light Heavy Wide";
+        font-size: 2.312rem;
+        color: $color-white;
+
+        background-color: #23262f;
+    }
+    .pack-collectible__block {
+        margin-bottom: 44px;
+
+        .collectible-block {
+            display: flex;
+            justify-content: space-between;
+            color: $color-white;
+            margin-left: 70px;
+        }
+        .collectible-txt {
+            width: 45%;
+        }
+        .collectible-details {
+            display: flex;
+            .details {
+                width: 198px;
+                padding: 21px 0 35px 0;
+                margin-right: 30px;
+
+                text-align: center;
+                background-color: #0b0b0c;
+                border-radius: 11px;
+                &:last-child {
+                    margin-right: 0;
+                }
+                p {
+                    font-family: "Shapiro 95 Super";
+                    font-size: 2.312rem;
+                    color: $color-white;
+                    margin-bottom: 3px;
+                    span {
+                        margin-left: 5px;
+                        padding: 0 5px;
+                        background-color: #777e91;
+                        color: #0b0b0c;
+                        text-transform: lowercase;
+                    }
+                    &:last-child {
+                        font-family: "Shapiro 55 Middle";
+                        font-size: 0.875rem;
+                        color: #777e91;
+                        text-transform: uppercase;
+                    }
+                }
+            }
+        }
+        .rear-block {
+            padding-bottom: 41px;
+            border-bottom: 1px solid #353945;
+        }
+        .rare-set {
+            margin-left: 70px;
+            font-family: "Shapiro 75 Heavy";
+            font-size: 1.5rem;
+            color: $color-white;
+            .released {
+                font-family: "Shapiro 55 Middle";
+                font-size: 1.125rem;
+            }
+        }
+        .explore-more {
+            display: flex;
+            align-items: center;
+            margin-top: 50px;
+            margin-left: 70px;
+
+            font-family: "Shapiro 55 Middle";
+            font-size: 1.125rem;
+            color: $color-white;
+            img {
+                margin-right: 20px;
+            }
+            a {
+                color: $color-text-grey;
+                text-decoration: underline;
+            }
+        }
+    }
+    .pack-properties__block {
+        margin-bottom: 51px;
+        .properties-items {
+            display: flex;
+        }
+        .properties {
+            padding: 38px 55px 31px 55px;
+            margin-right: 30px;
+
+            font-family: "Shapiro 55 Middle";
+            font-size: 0.875rem;
+            color: $color-text-grey;
+            text-align: center;
+
+            background-color: #0b0b0c;
+            border-radius: 11px;
+            &:last-child {
+                margin-right: 0;
+            }
+            p {
+                span {
+                    padding-right: 5px;
+                }
+                &:nth-child(2) {
+                    margin-bottom: 20px;
+                    font-family: "Shapiro 75 Heavy";
+                    font-size: 1.5rem;
+                    color: $color-white;
+                }
+            }
+        }
+    }
+    .pack-chain__block {
+        margin-bottom: 80px;
+        p {
+            margin-bottom: 10px;
+        }
+        a {
+            margin-bottom: 10px;
+        }
+        .chain-block {
+            display: flex;
+            margin-left: 70px;
+            font-family: "Shapiro 55 Middle";
+            font-size: 1.125rem;
+            color: $color-white;
+        }
+        .chain-title {
+            margin-right: 50px;
+        }
+
+        .chain-data {
+            .contact-address {
+                display: block;
+                white-space: nowrap;
+                width: 170px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .token-id {
+                white-space: nowrap;
+                width: 170px;
+
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+}
+///////////////////////
+// ITEM SUCCESS PAGE //
+///////////////////////
+
+.order-status {
+    display: flex;
+    p {
+        font-family: "Shapiro 55 Middle";
+        color: #777e91;
+        text-transform: uppercase;
+    }
+    span {
+        padding: 2px 10px;
+        margin-left: 8px;
+        text-transform: uppercase;
+        font-size: 0.562rem;
+        color: #3fbc6c;
+        border: 1px solid #3fbc6c;
+        border-radius: 20px;
+    }
+}
+
+.listing-summary__block {
+    margin-top: 63px;
+    margin-bottom: 40px;
+    p {
+        padding-bottom: 24px;
+        font-family: "Shapiro 65 Light Heavy";
+        font-size: 1.062rem;
+        color: $color-white;
+    }
+    .credit-block {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 24px;
+        border-top: 1px solid #353945;
+        p {
+            font-family: "Shapiro 55 Middle";
+            font-size: 0.75rem;
+            color: #777e91;
+        }
+        button {
+            border: none;
+            @include buttonBlue;
+        }
+    }
+}
+
+.how-it-works__info-block {
+    display: flex;
+    padding: 162px 0 277px;
+    .info-img {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 50%;
+        padding: 0 90px;
+        background-image: url("../img/group-671.png");
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    .info-txt {
+        width: 50%;
+        font-family: "Shapiro 45 Welter";
+        font-size: 0.875rem;
+        color: $color-white;
+
+        .info-txt__title {
+            margin-bottom: 20px;
+            font-family: "Shapiro 85 Super Heavy Wide";
+            font-size: 3.312rem;
+            line-height: 58px;
+        }
+    }
+}
+.grab-collectibles {
+    text-align: center;
+    color: $color-white;
+    .grab-title {
+        margin-bottom: 14px;
+        font-family: "Shapiro 75 Heavy Wide";
+        font-size: 2.375rem;
+    }
+    .grab-link {
+        font-family: "Shapiro 65 Light Heavy";
+        font-size: 0.875rem;
+        text-decoration: underline;
+        text-transform: uppercase;
+        color: $color-white;
+    }
+    .grab-list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        margin-top: 50px;
+        margin-bottom: 212px;
+        .grab-item {
+            display: flex;
+            justify-content: center;
+            img {
+                width: 188px;
+                height: 199px;
+            }
+        }
+    }
+}
+
+.how-it-works__score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 200px;
+    .score-img__block {
+        width: 293px;
+        height: 311px;
+
+        margin-right: 124px;
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+    .score-desk__block {
+        width: 50%;
+        color: $color-white;
+        .score-title {
+            margin-bottom: 5px;
+            font-family: "Shapiro 75 Heavy Wide";
+            font-size: 2.375rem;
+        }
+        .score-txt {
+            margin-bottom: 32px;
+            font-family: "Shapiro 45 Welter";
+            font-size: 0.875rem;
+        }
+    }
+    .score-tariff-plan__wrapper {
+        display: flex;
+
+        .score-tariff-plan__block {
+            margin-right: 24px;
+
+            &:last-child {
+                margin-right: 0;
+            }
+            &:hover {
+                .score-plan {
+                    background-color: #55b7ce;
+                }
+                .score-plan__type {
+                    visibility: inherit;
+                }
+            }
+            .score-plan__type {
+                visibility: hidden;
+                font-family: "Shapiro 65 Light Heavy";
+                font-size: 0.875rem;
+                text-align: center;
+                text-transform: uppercase;
+            }
+        }
+        .score-plan {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 82px;
+            height: 82px;
+            margin-bottom: 11px;
+            background-color: #777e91;
+            cursor: pointer;
+        }
+    }
+}
+.limited-edition__block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 300px;
+    color: $color-white;
+    .limited-edition__txt {
+        width: 40%;
+        margin-right: 142px;
+        .limited-edition__title {
+            margin-bottom: 12px;
+            line-height: 44px;
+            font-family: "Shapiro 75 Heavy Wide";
+            font-size: 2.375rem;
+        }
+        p {
+            font-family: "Shapiro 45 Welter";
+            font-size: 0.875rem;
+        }
+    }
+    .limited-edition__img {
+        width: 293px;
+        height: 311px;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+
+.key-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 135px;
+    color: $color-white;
+    .key-section__title {
+        margin-bottom: 50px;
+        font-family: "Shapiro 75 Heavy Wide";
+        font-size: 2.375rem;
+    }
+    .key-block {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 124px;
+        grid-row-gap: 40px;
+    }
+    .key-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            margin-right: 10px;
+        }
+        p {
+            font-family: "Shapiro 65 Light Heavy";
+            font-size: 0.875rem;
+            text-transform: uppercase;
+        }
+    }
+}
+.section-collaborate {
+    padding-top: 134px;
+}
+.collaborate-title__block {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    .section-title {
+        margin-bottom: 14px;
+    }
+    .sub-title {
+        font-family: "Shapiro 45 Welter";
+        font-size: 0.875rem;
+        color: $color-white;
+    }
+    img {
+        margin-top: 35px;
+        margin-bottom: 94px;
+    }
+}
+
+.collaborate-artist__block {
+    position: relative;
+    padding: 24px 41px 42px;
+    margin-bottom: 56px;
+    color: $color-white;
+    background: rgb(15, 12, 48);
+    background: linear-gradient(
+                    90deg,
+                    rgba(15, 12, 48, 1) 0%,
+                    rgba(15, 12, 48, 1) 37%,
+                    rgba(155, 72, 128, 1) 100%
+    );
+    border-radius: 12px;
+    overflow: hidden;
+    z-index: 0;
+    &:after {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 400px;
+        height: 400px;
+        background-image: url("../img/beatoken.png");
+        background-position: 0 100%;
+        top: 0;
+        right: 0;
+
+        z-index: -1;
+    }
+    .collaborate-artist__title {
+        margin-bottom: 5px;
+        font-family: "Shapiro 65 Light Heavy Wide";
+        font-size: 2.312rem;
+    }
+    .collaborate-artist {
+        width: 55%;
+        font-family: "Shapiro 45 Welter";
+        font-size: 1.25rem;
+        margin-bottom: 52px;
+    }
+    button {
+        @include buttonBlue;
+        border: none;
+        -webkit-box-shadow: unset;
+        box-shadow: unset;
+        outline: none;
+    }
+}
+
+.what-is__block {
+    display: flex;
+    justify-content: space-around;
+    color: $color-white;
+    .what-nft {
+        width: 45%;
+    }
+    .what-nft__title {
+        margin-bottom: 15px;
+        font-family: "Shapiro 65 Light Heavy Wide";
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-family: "Shapiro 45 Welter";
+        font-size: 0.875rem;
+    }
+    .what-nft__txt {
+        padding-bottom: 15px;
+    }
+}
+
+.edit-profile__container {
+    margin-top: 50px;
+    margin-bottom: 450px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 45px;
+    color: $color-white;
+    button {
+        @include buttonBlue;
+        border: none;
+    }
+}
+
+////////////
+// FOOTER //
+////////////
+.footer {
+    padding-top: 69px;
+}
+
+.footer-row {
+    display: flex;
+    justify-content: space-between;
+
+    padding-bottom: 46px;
+    border-bottom: 1px solid #353945;
+    .footer-logo__block{
+
+
+        .some {
+            display: flex;
+            justify-content: space-between;
+            padding-left: 70px;
+        }
+
+        a {
+            font-size: 17px;
+            line-height: 36px;
+            color: #777e91;
+            border: solid 2px #777e91;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            margin-top: 20px;
+        }
+    }
+}
+//////////////////
+// EDIT PROFILE //
+//////////////////
+.edit-profile__name-block{
+    width: 100%!important;
+}
+
+.edit-profile__password-block{
+    width: 100%!important;
+
+}
+.edit-profile__socialmedia-block{
+    width: 100%!important;
+}
+
+.footer-column {
+    color: $color-white;
+    form {
+        margin-top: 39px;
+    }
+    .footer-links__title {
+        display: flex;
+        justify-content: space-between;
+
+        font-family: "Shapiro 55 Middle Extd";
+
+        font-size: 0.75rem;
+        text-transform: uppercase;
+
+        .icon-down-open {
+            display: none;
+            color: #777e8f;
+        }
+    }
+
+    .footer-links {
+        display: flex;
+        flex-direction: column;
+        margin-top: 39px;
+        a {
+            margin-bottom: 21px;
+            font-family: "Shapiro 55 Middle";
+            font-size: 0.812rem;
+            color: $color-text-grey;
+        }
+        .blue_button{
+            @include buttonBlue;
+            text-align: center;
+        }
+    }
+}
+
+.footer-join__block {
+    width: 356px;
+    .form-label {
+        font-family: "Shapiro 55 Middle";
+        font-size: 0.875rem;
+        margin-bottom: 26px;
+    }
+    .input-block {
+        position: relative;
+    }
+    .newsletter {
+        padding: 12px 10px 16px 24px;
+        font-family: "Shapiro 55 Middle";
+        font-size: 0.875rem;
+        color: $color-white;
+        background-color: #141416;
+        border: 2px solid #707070;
+        border-radius: 30px;
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+        &::placeholder {
+            font-family: "Shapiro 55 Middle";
+            font-size: 0.875rem;
+            color: $color-white;
+        }
+    }
+
+    .btn {
+        position: absolute;
+        top: 20%;
+        right: 10px;
+        padding: 10px 8px;
+        border-radius: 50%;
+        img {
+            width: 14px;
+            height: 9px;
+        }
+    }
+}
+
+.copyright {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 30px;
+    padding-bottom: 33px;
+    color: $color-text-grey;
+    font-family: "Shapiro 55 Middle Extd";
+    font-size: 0.75rem;
+    .accept {
+        display: flex;
+        color: $color-white;
+        p {
+            margin-right: 14px;
+        }
+    }
+}
+
+////////////////////
+// MODAL FOR SALE //
+////////////////////
+.modal-dialog {
+    max-width: 759px;
+    &.modal-dialog-contact {
+        max-width: 582px;
+    }
+}
+.modal-content {
+    padding: 0 80px;
+    color: $color-white;
+    background-color: #23262f;
+    border-radius: 11px;
+    &.modal-content-contact {
+        padding: 0 62px;
+    }
+}
+
+.modal-header {
+    // position: relative;
+    padding: 45px 0 10px;
+    border-bottom: none;
+    &.modal-header-contact {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 42px;
+    }
+    &.modal-header__select-buy {
+        flex-direction: column;
+        align-items: flex-start;
+        .sub-title {
+            margin: 9px 0 25px;
+        }
+        .buy-sort__block {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 15px;
+            .item-buy__available {
+                display: flex;
+                a {
+                    font-family: "Shapiro 65 Light Heavy";
+                    font-size: 0.875rem;
+                    color: $color-white;
+                    text-decoration: underline;
+                }
+            }
+            .form-select {
+                width: 137px;
+            }
+        }
+    }
+    .modal-title {
+        font-family: "Shapiro 65 Light Heavy Wide";
+        font-size: 2.312rem;
+    }
+    .btn-close {
+        position: absolute;
+        top: 25px;
+        right: 20px;
+        color: $color-white;
+        background: none;
+        &:focus {
+            box-shadow: none;
+        }
+    }
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 0;
+    &.modal-body-contact {
+        display: block;
+        width: 100%;
+        .input-contact__block {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            label {
+                width: 22%;
+                font-family: "Shapiro 65 Light Heavy";
+                font-size: 0.875rem;
+                text-transform: uppercase;
+            }
+            input {
+                width: 78%;
+                background-color: #272b33;
+                border: 1px solid #353945;
+                border-radius: 20px;
+                color: $color-white;
+                &:focus {
+                    box-shadow: none;
+                }
+            }
+        }
+        .text-area__block {
+            display: flex;
+            label {
+                width: 22%;
+                font-family: "Shapiro 65 Light Heavy";
+                font-size: 0.875rem;
+                text-transform: uppercase;
+            }
+            textarea {
+                width: 78%;
+                height: 150px;
+                resize: none;
+                background-color: #272b33;
+                border: 1px solid #353945;
+                border-radius: 20px;
+                color: $color-white;
+                &:focus {
+                    box-shadow: none;
+                }
+            }
+        }
+        .btn-contact__block {
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            margin: 24px 0 38px 0;
+            .btn-contact {
+                @include buttonBlue;
+                border: none;
+            }
+        }
+    }
+}
+
+.buy-list {
+    width: 100%;
+
+    .buy-item {
+        display: flex;
+        align-items: center;
+        // justify-content: space-between;
+        width: 100%;
+        padding: 12px 20px 12px 28px;
+        margin-bottom: 12px;
+        background-color: #0b0b0c;
+        border-radius: 12px;
+        font-family: "Shapiro 75 Heavy";
+        font-size: 0.75rem;
+        .buy-id {
+            width: 20%;
+        }
+        .buy-price {
+            width: 20%;
+        }
+        .buy-user__nickname {
+            width: 40%;
+            font-family: "Shapiro 55 Middle";
+            color: $color-text-grey;
+        }
+        .buy-now__btn {
+            align-self: flex-end;
+            @include buttonBlue;
+            border: none;
+        }
+    }
+}
+
+.for-sale__manual-block {
+    margin-bottom: 45px;
+    align-self: flex-start;
+    font-family: "Shapiro 55 Middle";
+    font-size: 1.125rem;
+    line-height: 21px;
+}
+.for-sale__desc-block {
+    display: flex;
+    // justify-content: space-between;
+    width: 100%;
+    padding: 14px 26px 14px 26px;
+    margin-bottom: 56px;
+    // margin-right: 18px;
+    background-color: #0b0b0c;
+    border-radius: 12px;
+    .img-block {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 21px;
+        width: 229px;
+        height: 227px;
+    }
+    .desc {
+        margin-top: 20px;
+    }
+    .desc-name {
+        margin-bottom: 5px;
+        font-family: "Shapiro 75 Heavy Wide";
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        color: $color-white;
+    }
+    .type-desc {
+        margin-bottom: 23px;
+        font-family: "Shapiro 55 Middle";
+        font-size: 0.75rem;
+        line-height: 15px;
+        color: #777e91;
+        .date {
+            display: flex;
+            margin-top: 20px;
+            span {
+                padding-right: 5px;
+            }
+        }
+        .to-mail {
+            margin-top: 30px;
+            font-family: "Shapiro 55 Middle";
+            font-size: 0.625rem;
+            color: $color-white;
+            text-transform: uppercase;
+        }
+    }
+    .tariff-plan {
+        font-family: "Shapiro 75 Heavy";
+        font-size: 0.75rem;
+        color: #777e91;
+        .plan-icon {
+            padding: 0 10px;
+            margin-left: 5px;
+            font-size: 0.625rem;
+            border: 1px solid #777e91;
+            border-radius: 20px;
+        }
+    }
+}
+
+.for-sale__price-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 61%;
+    margin-bottom: 76px;
+    input {
+        width: 100%;
+
+        padding: 9px 0 12px;
+        margin-bottom: 20px;
+
+        font-family: "Shapiro 65 Light Heavy";
+        font-size: 1.062rem;
+        color: $color-white;
+        text-align: center;
+
+        background: none;
+        border: 2px solid #353945;
+        border-radius: 30px;
+
+        outline: none;
+        &::placeholder {
+            font-family: "Shapiro 65 Light Heavy";
+            color: #353945;
+        }
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    .price-block__txt {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        font-family: "Shapiro 55 Middle";
+        font-size: 0.75rem;
+        color: #777e91;
+        .fee {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 22px;
+            border-bottom: 1px solid #353945;
+            .fee-payout {
+                display: flex;
+            }
+        }
+        .total-payout {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 19px;
+        }
+        .payout {
+            display: flex;
+        }
+    }
+}
+
+.prize-timer__block {
+    margin-bottom: 31px;
+    text-align: center;
+    P {
+        color: #777e91;
+    }
+    .timer {
+        font-family: "Shapiro 95 Super";
+        font-size: 1.875rem;
+        color: $color-white;
+    }
+}
+.modal-footer {
+    justify-content: center;
+
+    border-top: none;
+
+    padding: 0;
+    &.modal-footer__modal-footer-buy {
+        padding-bottom: 38px;
+    }
+    .for-sale__btn-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 61%;
+        padding-bottom: 70px;
+        color: #777e91;
+        p {
+            font-size: 0.75rem;
+            a {
+                text-decoration: underline;
+                color: #777e91;
+                padding-left: 5px;
+            }
+        }
+
+        .item-success {
+            width: 100%;
+            @include buttonBlue;
+            text-align: center;
+            border: none;
+            margin-bottom: 14px;
+        }
+    }
+}
+
+.admin-wrapper {
+    display: flex;
+    // justify-content: space-between;
+}
+.admin-nav {
+    width: 20%;
+    padding-top: 50px;
+
+    .admin-nav__item {
+        padding-bottom: 20px;
+
+        a {
+            padding-bottom: 5px;
+            font-family: "Shapiro 75 Heavy Wide";
+            font-size: 1.25rem;
+            color: $color-white;
+            &.active {
+                border-bottom: 2px solid #1c70de;
+            }
+            &:hover {
+                border-bottom: 2px solid #1c70de;
+            }
+        }
+        .icon-arrow-left {
+            align-self: center;
+            font-size: 0.8rem;
+            padding-right: 5px;
+        }
+    }
+}
+.admin-main {
+    width: 80%;
+    padding: 50px 20px 50px;
+
+    background-color: #fff;
+    .admin-main__nav {
+        display: flex;
+        justify-content: space-between;
+
+        width: 100%;
+
+        padding-bottom: 50px;
+    }
+    .admin-main__title {
+        font-family: "Shapiro 75 Heavy Wide";
+        font-size: 2.25rem;
+    }
+
+    tr {
+        text-align: center;
+        vertical-align: middle;
+        .table-nft__img {
+            img {
+                width: 100px;
+                height: 100px;
+                border-radius: unset;
+            }
+        }
+        a {
+            color: #212529;
+        }
+        img {
+            display: block;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+            border-radius: 50%;
+        }
+    }
+
+    .user-data__block {
+        display: flex;
+
+        .user-data__avatar {
+            padding-right: 20px;
+            img {
+                width: 150px;
+                height: 150px;
+
+                border-radius: 50%;
+            }
+        }
+        .user-data {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .user-data__txt {
+            font-size: 1.5rem;
+        }
+        .user-refill {
+            display: flex;
+
+            p {
+                font-size: 1.5rem;
+                font-weight: 500;
+                margin-right: 20px;
+                span {
+                    padding: 0 5px;
+                }
+            }
+            .refill-btn {
+                @include buttonBlue;
+                border: none;
+            }
+        }
+    }
+
+    .user-nft__block {
+        align-self: flex-end;
+        .nft-sum {
+            text-align: right;
+            font-size: 1.5rem;
+            font-weight: 500;
+            span {
+                padding: 0 5px;
+            }
+        }
+    }
+
+    .user-data-change {
+        display: flex;
+        margin-bottom: 50px;
+        border-top: 1px solid #aaaaaa;
+    }
+    .user-change__form-block {
+        width: 50%;
+        padding: 0 20px;
+        margin-top: 30px;
+
+        border-right: 1px solid #aaaaaa;
+
+        .submit-btn {
+            @include buttonBlue;
+            border: none;
+            display: block;
+            margin: 0 auto;
+        }
+    }
+    .user-reset__block {
+        width: 50%;
+        margin-top: 50px;
+
+        .reset-btn {
+            @include buttonBlue;
+            border: none;
+            display: block;
+            margin: 0 auto;
+        }
+    }
+}
+
+.admin-table__title {
+    font-family: "Shapiro 75 Heavy Wide";
+    font-size: 2.25rem;
+
+    padding: 20px 0 25px;
+    border-top: 1px solid #aaaaaa;
+}
+
+.table-collection {
+    text-align: left;
+    p {
+        span {
+            padding-left: 5px;
+        }
+    }
+}
+.in {
+    background-color: #3fbc6c;
+}
+.out {
+    background-color: #ff335a;
+}
+
+.categories-wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    .accordion-block {
+        width: 49%;
+        .select-set__block {
+            select {
+                display: block;
+                width: 100%;
+            }
+        }
+        .submit {
+            @include buttonBlue;
+            border: none;
+        }
+    }
+
+    .categories-table__block {
+        width: 49%;
+    }
+}
+
+//////////////////////////
+// MODAL RESET PASSWORD //
+//////////////////////////
+.user-modal__data {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    img {
+        width: 150px;
+        height: 150px;
+        margin-right: 25px;
+        border-radius: 50%;
+    }
+    p {
+        font-family: "Shapiro 75 Heavy Wide";
+        font-size: 2.25rem;
+    }
+}
+
+.reset-password__form {
+    margin-bottom: 45px;
+    .submit-btn {
+        @include buttonBlue;
+        border: none;
+        display: block;
+        margin: 0 auto;
+    }
+}
+/////////////////////////
+// MODAL REFILL BALANCE//
+/////////////////////////
+.refill-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0b0b0c;
+    border-radius: 12px;
+    padding: 12px 20px 12px 28px;
+    margin-bottom: 50px;
+    font-family: "Shapiro 75 Heavy";
+    .refill {
+        @include buttonBlue;
+        border: none;
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        /* display: none; <- Crashes Chrome on hover */
+        -webkit-appearance: none;
+        margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+    }
+    input {
+        background: #0b0b0c;
+        border: none;
+        color: #fff;
+    }
+}
+
+///////////////////////
+// MODAL CREATE PACK //
+///////////////////////
+.create-pack__mod{
+
+    .tox-tinymce{
+        width: 70%;
+        border-radius: 20px;
+    }
+    .upload-btn{
+        padding: 10px 16px 10px 16px;
+        border-radius: 20px;
+        background-color: #1C70DE;
+        color: #fff;
+        cursor: pointer;
+        transition: all 0.2s;
+        border: none;
+        &:hover{
+            background-color: #d5d7db;
+            color: #141416;
+        }
+    }
+    .cover-block__img-nft{
+        display: flex;
+
+        flex-direction: column;
+        align-items: center;
+
+        width: 100%;
+
+        padding-bottom: 25px;
+        padding-top: 30px;
+
+        margin-bottom: 28px;
+
+        border-bottom: 1px solid #353944;
+
+        .cover-img__nft{
+            width: 142px;
+            height: 142px;
+            margin-bottom: 20px;
+            background-color: #272B33;
+            border-radius: 20px;
+        }
+
+
+
+    }
+    .create-nft__block {
+
+        padding: 0 20px 28px 20px;
+        margin-bottom: 30px;
+
+        border-bottom: 1px solid #353944;
+
+        color: #fff;
+
+        .inputs-nft__block{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 20px;
+            &.textarea{
+                align-items: unset;
+            }
+        }
+        label{
+
+            width: 20%;
+
+        }
+        input{
+            width: 70%;
+            align-self: flex-end;
+            padding: 11px 10px 11px 24px;
+            font-family: "Shapiro 55 Middle";
+            font-size: 0.875rem;
+
+            color: #fff;
+            background-color: #272B33;
+            border: 1px solid #353945;
+            border-radius: 20px;
+
+            &:active, &:focus{
+
+                box-shadow: unset;
+            }
+        }
+        //    textarea{
+        //        height: 120px;
+        //        color: #fff;
+        //        resize: none;
+        //        background-color: #272B33;
+        //        border: 1px solid #353945;
+        //        &:active, &:focus{
+
+        //            box-shadow: unset;
+        //        }
+        //    }
+
+
+
+    }
+
+}
+
+.modal-content.modal-content-blocto{
+    padding: 0;
+    border-radius: 0;
+}
+.modal-header.modal-header-blockto{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 90px;
+}
+
+.modal-title.blockto-title{
+    font-size: 1.5rem;
+}
+
+.modal-body.blockto{
+    padding: 0 70px;
+}
+
+.modal-body.blockto .blocto-block:first-child{
+    margin-bottom: 80px;
+}
+.blocto-block{
+    display: flex;
+    align-items: center;
+}
+
+
+.blocto-block .number{
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: #777E91;
+}
+
+.blocto-block .check{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 107px;
+    height: 107px;
+
+    margin: 0 40px 0 34px;
+
+    /* background: none; */
+    border-radius: 1000px;
+
+    background: -webkit-linear-gradient(left top, #1C70DE 0%, #DC3B54 100%);
+
+}
+
+.blocto-block .box{
+    position: relative;
+    display: block;
+
+    width: 105px;
+    height: 105px;
+
+    background: #28323D;
+    border-radius: 1000px;
+}
+
+.blocto-block .blockto-text{
+    width: 60%;
+}
+
+.blocto-block .box.active{
+    background-image: url('../img/check.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.blocto-block .box .spinner{
+    width: 60px;
+    height: 60px;
+
+    border: 6px solid #3f4953;
+    border-top: 6px solid #fff;
+
+    border-radius: 100%;
+
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+.modal-footer.blockto-footer > *{
+    margin: 0;
+}
+.modal-footer.blockto-footer .btn-finish{
+    margin: 70px 0 50px;
+    padding: 7px 24px 10px;
+    font-family: "Shapiro 75 Heavy";
+    font-size: 0.875rem;
+    color: #fff;
+    border-radius: 20px;
+    background-color: #1c70de;
+    transition: all 0.3s;
+    width: 142px;
+    height: 38px;
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.blockto-footer .line{
+    width: 100%;
+    height: 11px;
+    background: linear-gradient(90deg, #1c70de 0%, #9b4880 62%, #c33c64 86%, #dc3b54 100%);
+}
+
+@import "mobile";

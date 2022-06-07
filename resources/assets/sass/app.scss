@@ -1,0 +1,140 @@
+@import "main";
+
+.full-screen {
+    display: flex;
+    flex-direction: column;
+    height: 100vh
+}
+
+.flex, .flex-center{
+    display: flex;
+    align-items: center
+}
+
+.flex-center {
+    justify-content: center
+}
+
+.flex-between {
+    justify-content: space-between
+}
+
+.flex-around {
+    justify-content: space-around
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.carousel {
+    .slick-slide {
+        .carousel-item {
+            display: flex !important;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center
+        }
+    }
+}
+
+.input-black {
+    padding: 16px 10px 16px 24px;
+    font-family: "Shapiro 55 Middle";
+    font-size: 0.875rem;
+    border: 2px solid #707070;
+    border-radius: 30px
+}
+
+.user-avatar__link {
+    cursor: pointer
+}
+
+.navbar-list .nav-item .nav-link.active:after, .navbar-list .nav-item .nav-link.router-link-active:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #1c70de 0%, #1c70de 50%, #28293a 100%)
+}
+
+.admin-nav .admin-nav__item a.router-link-active {
+    border-bottom: 2px solid #1c70de
+}
+
+.admin-main tr img {
+    height: auto
+}
+
+.pack-carousel__block .slick-slide.slick-current.slick-active .pack2:after {
+    content: " ";
+    position: absolute;
+    top: 109px;
+    width: 106px;
+    height: 3px;
+    background: linear-gradient(90deg, #1c70de 0%, #9b4880 59%, #dc3b54 82%, #c33c64 100%);
+}
+
+.navbar-list .user-avatar__item-menu .user-dropdown__menu {
+    width: auto;
+    min-width: 221px;
+}
+
+.drop-main__aside:after {
+    top: 680px;
+    height: 200%;
+    bottom: unset;
+}
+
+.edit-btn {
+    cursor: pointer;
+}
+
+
+.aside-user .user-edit__container {
+    padding: 0 0 50px 0;
+}
+
+.aside-user .user-edit__container .user-info .user-name {
+    font-size: 1.2rem;
+}
+
+.refill-block input.money {
+    width: 100%;
+    border-radius: 20px;
+    padding: 5px 10px 10px 20px;
+    color: #212529;
+    background: #fff
+}
+
+@media screen and (max-width: 992px) {
+    .footer-row .footer-logo__block {
+        flex-direction: column;
+        align-items: center;
+    }
+    .some a {
+        margin: 10px;
+    }
+}
+
+.music-card__item .music-desc__block {
+    padding-right: 8px;
+}
+
+.slick-slide video {
+    display: block;
+}
+
+.user-avatar__link img.user-avatar, .user-avatar__block img {
+    object-fit: cover;
+}
+
+@media screen and (max-width: 576px) {
+    .pack-carousel__block .pack2 video {
+        width: 70px;
+        height: 70px;
+    }
+}

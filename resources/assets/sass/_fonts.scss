@@ -1,0 +1,191 @@
+@font-face {
+    font-family: "Poppins SemiBold";
+    src: url("../fonts/Poppins\ SemiBold.eot");
+    src: url("../fonts/Poppins\ SemiBold.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/Poppins\ SemiBold.woff2") format("woff2"),
+    url("../fonts/Poppins\ SemiBold.woff") format("woff"),
+    url("../fonts/Poppins\ SemiBold.svg#Poppins SemiBold") format("svg");
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    unicode-range: U+0020-00FE;
+}
+
+@font-face {
+    font-family: "Shapiro 35 Feather";
+    src: url("../fonts/Shapiro-35Feather.eot");
+    src: url("../fonts/Shapiro-35Feather.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/Shapiro-35Feather.woff2") format("woff2"),
+    url("../fonts/Shapiro-35Feather.woff") format("woff"),
+    url("../fonts/Shapiro-35Feather.svg#Shapiro-35Feather") format("svg");
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    unicode-range: U+0020-00FE;
+}
+
+@font-face {
+    font-family: "Shapiro 45 Welter";
+    src: url("../fonts/Shapiro-45Welter.eot");
+    src: url("../fonts/Shapiro-45Welter.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/Shapiro-45Welter.woff2") format("woff2"),
+    url("../fonts/Shapiro-45Welter.woff") format("woff"),
+    url("../fonts/Shapiro-45Welter.svg#Shapiro-45Welter") format("svg");
+    font-weight: 350;
+    font-style: normal;
+    font-stretch: normal;
+    unicode-range: U+0020-00FE;
+}
+
+@font-face {
+    font-family: "Shapiro 45 Welter Wide";
+    src: url("../fonts/Shapiro-45WelterWide.eot");
+    src: url("../fonts/Shapiro-45WelterWide.eot?#iefix")
+    format("embedded-opentype"),
+    url("../fonts/Shapiro-45WelterWide.woff2") format("woff2"),
+    url("../fonts/Shapiro-45WelterWide.woff") format("woff"),
+    url("../fonts/Shapiro-45WelterWide.svg#Shapiro-45WelterWide") format("svg");
+    font-weight: 350;
+    font-style: normal;
+    font-stretch: expanded;
+    unicode-range: U+0020-00FE;
+}
+
+@font-face {
+    font-family: "Shapiro 55 Middle Extd";
+    src: url("../fonts/Shapiro-55MiddleExtd.eot");
+    src: url("../fonts/Shapiro-55MiddleExtd.eot?#iefix")
+    format("embedded-opentype"),
+    url("../fonts/Shapiro-55MiddleExtd.woff2") format("woff2"),
+    url("../fonts/Shapiro-55MiddleExtd.woff") format("woff"),
+    url("../fonts/Shapiro-55MiddleExtd.svg#Shapiro-55MiddleExtd") format("svg");
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: extra-expanded;
+    unicode-range: U+0020-00FE;
+}
+
+@font-face {
+    font-family: "Shapiro 55 Middle";
+    src: url("../fonts/Shapiro-55Middle.eot");
+    src: url("../fonts/Shapiro-55Middle.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/Shapiro-55Middle.woff2") format("woff2"),
+    url("../fonts/Shapiro-55Middle.woff") format("woff"),
+    url("../fonts/Shapiro-55Middle.svg#Shapiro-55Middle") format("svg");
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    unicode-range: U+0020-00FE;
+}
+
+@font-face {
+    font-family: "Shapiro 65 Light Heavy Wide";
+    src: url("../fonts/Shapiro-65LightHeavyWide.eot");
+    src: url("../fonts/Shapiro-65LightHeavyWide.eot?#iefix")
+    format("embedded-opentype"),
+    url("../fonts/Shapiro-65LightHeavyWide.woff2") format("woff2"),
+    url("../fonts/Shapiro-65LightHeavyWide.woff") format("woff"),
+    url("../fonts/Shapiro-65LightHeavyWide.svg#Shapiro-65LightHeavyWide")
+    format("svg");
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: expanded;
+    unicode-range: U+0020-00FE;
+}
+
+@font-face {
+    font-family: "Shapiro 65 Light Heavy";
+    src: url("../fonts/Shapiro-65LightHeavy.eot");
+    src: url("../fonts/Shapiro-65LightHeavy.eot?#iefix")
+    format("embedded-opentype"),
+    url("../fonts/Shapiro-65LightHeavy.woff2") format("woff2"),
+    url("../fonts/Shapiro-65LightHeavy.woff") format("woff"),
+    url("../fonts/Shapiro-65LightHeavy.svg#Shapiro-65LightHeavy") format("svg");
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    unicode-range: U+0020-00FE;
+}
+
+@font-face {
+    font-family: "Shapiro 75 Heavy Wide";
+    src: url("../fonts/Shapiro-75HeavyWide.eot");
+    src: url("../fonts/Shapiro-75HeavyWide.eot?#iefix")
+    format("embedded-opentype"),
+    url("../fonts/Shapiro-75HeavyWide.woff2") format("woff2"),
+    url("../fonts/Shapiro-75HeavyWide.woff") format("woff"),
+    url("../fonts/Shapiro-75HeavyWide.svg#Shapiro-75HeavyWide") format("svg");
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: expanded;
+    unicode-range: U+0020-00FE;
+}
+
+@font-face {
+    font-family: "Shapiro 75 Heavy";
+    src: url("../fonts/Shapiro-75Heavy.eot");
+    src: url("../fonts/Shapiro-75Heavy.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/Shapiro-75Heavy.woff2") format("woff2"),
+    url("../fonts/Shapiro-75Heavy.woff") format("woff"),
+    url("../fonts/Shapiro-75Heavy.svg#Shapiro-75Heavy") format("svg");
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    unicode-range: U+0020-00FE;
+}
+
+@font-face {
+    font-family: "Shapiro 85 Super Heavy Wide";
+    src: url("../fonts/Shapiro-85SuperHeavyWide.eot");
+    src: url("../fonts/Shapiro-85SuperHeavyWide.eot?#iefix")
+    format("embedded-opentype"),
+    url("../fonts/Shapiro-85SuperHeavyWide.woff2") format("woff2"),
+    url("../fonts/Shapiro-85SuperHeavyWide.woff") format("woff"),
+    url("../fonts/Shapiro-85SuperHeavyWide.svg#Shapiro-85SuperHeavyWide")
+    format("svg");
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: expanded;
+    unicode-range: U+0020-00FE;
+}
+
+@font-face {
+    font-family: "Shapiro 95 Super Extd";
+    src: url("../fonts/Shapiro-95SuperExtd.eot");
+    src: url("../fonts/Shapiro-95SuperExtd.eot?#iefix")
+    format("embedded-opentype"),
+    url("../fonts/Shapiro-95SuperExtd.woff2") format("woff2"),
+    url("../fonts/Shapiro-95SuperExtd.woff") format("woff"),
+    url("../fonts/Shapiro-95SuperExtd.svg#Shapiro-95SuperExtd") format("svg");
+    font-weight: 800;
+    font-style: normal;
+    font-stretch: extra-expanded;
+    unicode-range: U+0020-00FE;
+}
+
+@font-face {
+    font-family: "Shapiro 95 Super";
+    src: url("../fonts/Shapiro-95Super.eot");
+    src: url("../fonts/Shapiro-95Super.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/Shapiro-95Super.woff2") format("woff2"),
+    url("../fonts/Shapiro-95Super.woff") format("woff"),
+    url("../fonts/Shapiro-95Super.svg#Shapiro-95Super") format("svg");
+    font-weight: 800;
+    font-style: normal;
+    font-stretch: normal;
+    unicode-range: U+0020-00FE;
+}
+
+@font-face {
+    font-family: "Shapiro 115 Plus Extd";
+    src: url("../fonts/Shapiro-115PlusExtd.eot");
+    src: url("../fonts/Shapiro-115PlusExtd.eot?#iefix")
+    format("embedded-opentype"),
+    url("../fonts/Shapiro-115PlusExtd.woff2") format("woff2"),
+    url("../fonts/Shapiro-115PlusExtd.woff") format("woff"),
+    url("../fonts/Shapiro-115PlusExtd.svg#Shapiro-115PlusExtd") format("svg");
+    font-weight: 1000;
+    font-style: normal;
+    font-stretch: extra-expanded;
+    unicode-range: U+0020-00FE;
+}

@@ -1,0 +1,48 @@
+@import "fonts";
+
+$color-white: #fff;
+$color-dark-black: #141416;
+$color-text-grey: #777e91;
+$color-dark-grey: #353945;
+$color-blue: #1c70de;
+
+// Components
+@mixin buttonBlue {
+    padding: 7px 24px 10px;
+
+    font-family: "Shapiro 75 Heavy";
+    font-size: 0.875rem;
+    color: $color-white;
+
+    border-radius: 20px;
+    background-color: $color-blue;
+    transition: all 0.3s;
+    &:hover {
+        background-color: #054ba7;
+    }
+}
+
+// For mobile
+@mixin mediaSm {
+    @media screen and(max-width: 576px) {
+        @content;
+    }
+}
+
+@mixin mediaMd {
+    @media screen and(max-width: 768px) {
+        @content;
+    }
+}
+
+@mixin mediaLg {
+    @media screen and(max-width: 992px) {
+        @content;
+    }
+}
+
+@mixin mediaXl {
+    @media screen and(max-width: 1220px) {
+        @content;
+    }
+}
